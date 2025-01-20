@@ -1,66 +1,38 @@
 ---
-title: 'EcoBuddy: Sustainable Living App'
-description: EcoBuddy is a mobile app that gamifies sustainable living. Users can set eco-friendly goals, track their carbon footprint, and earn virtual rewards for adopting environmentally conscious habits.
-publishDate: 'Jan 02 2024'
+title: Grafana Cloud Application Observability
+description: ''
+publishDate: 'May 10 2024'
+isFeatured: true
 seo:
   image:
-    src: '/project-1.jpg'
-    alt: Project preview
+    src: 'https://i.postimg.cc/HW5wrDjc/app-o11y.png'
 ---
 
-![Project preview](/project-1.jpg)
+![Project preview](https://i.postimg.cc/HW5wrDjc/app-o11y.png)
 
-**Note:** This case study is entirely fictional and created for the purpose of showcasing [Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/).
 
-**Project Overview:**
-EcoBuddy is a revolutionary mobile application designed to make sustainable living accessible, engaging, and rewarding. With a focus on gamification and real-world impact, EcoBuddy encourages users to adopt eco-friendly habits, reduce their carbon footprint, and contribute to a healthier planet.
+In 2022, our small team had the opportunity to work on creating Grafana Lab's APM and RUM suite. Our mission was to design innovative solutions that leveraged unique capabilities to meet the needs of both seasoned DevOps and SRE teams, as well as less technical users who are increasingly adopting observability practices.
 
-## Objectives
 
-1. Develop a user-friendly mobile app that motivates individuals to adopt sustainable practices in their daily lives.
-2. Utilize gamification elements to make sustainable living fun and interactive.
-3. Provide educational resources and personalized challenges to empower users to make informed eco-conscious decisions.
+![app-o11y2.png](https://i.postimg.cc/QNzfP9d2/app-o11y2.png)
 
-## Features
+Current users reported frustration with the app's cluttered navigation and lack of clear goals. Our analysis showed a significant drop-off rate among less technical users, with many abandoning the app after just one week.
 
-1. **EcoScore and Challenges:**
+## Research and Analysis
 
-- Users are assigned an EcoScore based on their sustainable activities and choices.
-- Daily and weekly challenges encourage users to adopt new habits and compete with friends or the community to earn EcoPoints.
+I conducted in-depth interviews with 8 current users and observed a common pain point: difficulty navigating some of our applications to find information tailored to their monitoring goals. Our analysis revealed that less technical users preferred visual and interactive ways of exploring content.
 
-2. **Personalized Eco-Goals:**
 
-- Users can set and track personalized eco-goals, such as reducing plastic usage, conserving water, or choosing eco-friendly transportation.
-- The app provides tips and suggestions to help users achieve their goals.
+![app-o11y1.png](https://i.postimg.cc/85k3m2zN/app-o11y1.png)
 
-3. **Green Rewards Marketplace:**
 
-- EcoPoints earned through challenges and sustainable actions can be redeemed in a virtual Green Rewards Marketplace.
-- The marketplace offers discounts on eco-friendly products, services, and even contributions to environmental causes.
+## Design solution
 
-4. **Community Hub:**
+I employed a user-centered design approach, focusing on simplicity and discoverability. I've introduced a new onboarding feature that utilizes simple steps with minimal technical jargon, tailored to users' goals and tech savvy-ness levels.
 
-- A community feature allows users to connect, share their eco-friendly achievements, and inspire others.
-- Users can join local eco-groups, organize clean-up events, and collaborate on sustainability projects.
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/8kcVdRCMxkk?si=01PVlXObpy7jyFms" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-5. **EcoEducator AI Assistant:**
+Besides creating innovative design patterns, I also contributed to the design system and had the opportunity to create illustrations that support the idea of simplicity and visual appeal.
 
-- An AI-powered assistant, EcoEducator, provides personalized eco-tips, facts, and information based on users' preferences and habits.
-- Users can chat with EcoEducator for instant advice on sustainable living.
 
-## Technology Stack
-
-- Frontend: React Native for cross-platform mobile app development.
-- Backend: Firebase for real-time data synchronization and user authentication.
-- Database: Firestore for scalable and flexible data storage.
-- AI Integration: Dialogflow for natural language processing and conversation with EcoEducator.
-
-## Outcome
-
-EcoBuddy has successfully created a community of environmentally conscious individuals who actively participate in sustainable living practices. The app not only educates and motivates users but also provides tangible rewards for their commitment to a greener lifestyle, fostering a positive impact on the environment.
-
-## Client Testimonial
-
-> We couldn't be happier with the results delivered by Ethan Donovan. From the initial concept discussions to the final product, their responsiveness and collaborative approach were impressive. Our startup's website now stands out, thanks to their creative input and commitment to excellence.
-
-**Note:** This case study is entirely fictional and created for the purpose of showcasing [Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/).
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/mfWIeNjh1gQ?si=EsBF-4RI_2LqX-zA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

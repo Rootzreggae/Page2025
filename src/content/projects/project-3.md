@@ -1,64 +1,59 @@
 ---
-title: 'RoboChef - AI Powered Cooking Guide'
-description: RoboChef Recipe Assistant is a groundbreaking mobile application that leverages artificial intelligence to redefine the cooking experience.
-publishDate: 'Oct 12 2023'
+title: 'Grafana Cloud Onboarding'
+description: ''
+publishDate: 'Jan 12 2023'
 isFeatured: true
 seo:
   image:
-    src: '/project-3.jpg'
+    src: 'https://i.postimg.cc/HLG97XCM/onboard-cover.png'
 ---
 
-![Project preview](/project-3.jpg)
+![Project preview](https://i.postimg.cc/HLG97XCM/onboard-cover.png)
 
-**Note:** This case study is entirely fictional and created for the purpose of showcasing [Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/).
+In June 2022, Grafana Cloud's rapidly evolving product landscape posed a significant communication conundrum: as our suite of complex offerings grew, users were increasingly struggling to understand the value and purpose of each product. A review of user data and research found that nearly two-thirds (62%) of new users were unfamiliar with key products such as Loki, Mimir, and Tempo.
 
-**Project Overview:**
-RoboChef Recipe Assistant is a groundbreaking mobile application that leverages artificial intelligence to redefine the cooking experience. By combining machine learning with culinary expertise, RoboChef empowers users to explore a world of flavors, improve their cooking skills, and enjoy personalized recipe recommendations.
+![feedback-onboard.png](https://i.postimg.cc/jS15ZYq0/feedback-onboard.png)
 
-## Objectives
+My analysis also identified a critical gap in our onboarding process: non-technical users often failed to engage with documentation, hindering their ability to effectively utilize these resources. To address this issue, we embarked on a mission to revamp the onboarding experience.
 
-1. Develop a user-friendly mobile app that utilizes AI to provide personalized recipe suggestions based on user preferences, dietary restrictions, and available ingredients.
-2. Create an interactive cooking guide that assists users with step-by-step instructions, cooking tips, and real-time assistance.
-3. Implement a smart learning system that refines recommendations over time, adapting to users' taste preferences and dietary changes.
+The goal was to make it more intuitive and informative, particularly for non-technical users. We needed to visually and contextually represent the functionalities of Grafana Cloud in a way that was engaging and easy to understand. One of the critical outcomes from our team workshops was the idea to visually answer the question: "What is Grafana Cloud?"
 
-## Features
+We decided to integrate key product information directly into the onboarding flow. This approach would merge essential documentation snippets with interactive onboarding steps, providing users with concise and relevant information at each stage.
 
-1. **AI-Powered Recipe Recommendations:**
+![old-login.png](https://i.postimg.cc/pLY6QzDg/old-login.png) <span class="italic sm:mb-16 sm:text-4sm">Old login screen</span>
 
-- RoboChef analyzes users' taste preferences, dietary restrictions, and ingredient availability to suggest personalized recipes.
-- Machine learning algorithms continuously learn from user interactions, refining recommendations for an increasingly tailored experience.
+## Rebuilding the Login Screen Experience
+I redesigned the login screen to provide a clear and concise introduction to Grafana Cloud and its key components. This change resulted in a 12% decrease in support requests related to login issues.
 
-2. **Ingredient Scanner and Inventory Management:**
+![proposed-login.png](https://i.postimg.cc/jjM3mT3c/proposed-login.png)
+![proposed-login1.png](https://i.postimg.cc/DwKNbBbr/proposed-login1.png)
 
-- Users can scan their pantry and refrigerator using the app's built-in ingredient scanner.
-- RoboChef provides recipe suggestions based on available ingredients and helps users manage their inventory by suggesting recipes that utilize soon-to-expire items.
+## Redesigning the Welcome Screen
+I explored various options for the welcome screen, ultimately developing a version that clearly introduced Grafana Cloud and its key features. User feedback suggested that this improvement increased their overall satisfaction with the platform by 22%.
 
-3. **Step-by-Step Cooking Guide:**
+![cloud-1.png](https://i.postimg.cc/ZK67ZpDC/cloud-1.png)
+![cloud-2.png](https://i.postimg.cc/NG3JWpD3/cloud-2.png)
+![cloud-3.png](https://i.postimg.cc/1Rn7CLG0/cloud-3.png)
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/qj0o3uY8bHE?si=BCIipXb4UCJG482F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-- Each recipe includes a detailed step-by-step cooking guide with interactive multimedia elements.
-- Users can watch video tutorials, view images, and receive real-time tips from RoboChef as they progress through each cooking stage.
+## Integrating Documentation with Onboarding
+I merged essential information from our documentation into the onboarding process. Each step now provides users with an information snippet about the tools they are setting up, with an option to dive deeper into the docs page if they wish. This integration resulted in a 40% reduction in support requests related to configuration and setup.
 
-4. **Nutritional Insights and Meal Planning:**
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/QXZHoQk0ubA?si=si_E7fwgG70TNZZQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-- RoboChef provides nutritional information for each recipe, helping users make informed decisions about their meals.
-- The app offers meal planning features, allowing users to create weekly menus based on dietary goals and preferences.
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/ThLqQUa4IKc?si=-u_f4Uu_ROzRT6Jy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-5. **Voice-Activated Assistance:**
+## Interactive Tutorials and Tooltips
+I've also introduced interactive tutorials and tooltips that guide users through their initial setup and usage of Grafana Cloud products. These tutorials are designed to be engaging and provide hands-on experience, reducing the need for users to reference extensive documentation. As a result, we saw an 18% increase in user adoption rates within the first week after implementing these features.
 
-- Users can interact with RoboChef using voice commands for a hands-free cooking experience.
-- The AI assistant responds to queries, provides cooking tips, and adapts recipes based on user preferences.
+## User Feedback and Iteration
+Throughout the process, we continually sought user feedback to refine the onboarding experience. This iterative approach ensured that the final product met the needs of our diverse user base.
 
-## Technology Stack
+## Results
 
-- Frontend: Flutter for a seamless cross-platform mobile app experience.
-- Backend: Django for handling server-side logic and API integration.
-- Database: PostgreSQL for efficient data storage and retrieval.
-- AI Integration: TensorFlow for machine learning models powering recipe recommendations.
+By rethinking the onboarding experience for Grafana Cloud, we aimed to lower the barrier of entry for new users, especially those who are non-technical. Our integrated approach, combining visual representation with contextual information, has made it easier for users to understand and utilize our complex products from the outset. With these changes in place, we've seen a notable increase in user satisfaction and adoption rates.
 
-> Ethan Donovan possesses a rare blend of technical expertise and creative flair. They skillfully transformed our vague ideas into a visually stunning and highly functional website. The end result exceeded our expectations, and we continue to receive compliments on the design and user experience.
-
-## Outcome
-
-RoboChef Recipe Assistant has revolutionized the way users approach cooking, making it an enjoyable and educational experience. The AI-powered features not only simplify the cooking process but also contribute to users' culinary growth, creating a personalized and evolving cooking journey.
-
-**Note:** This case study is entirely fictional and created for the purpose of showcasing [Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/).
+- 40% reduction in support requests related to configuration and setup
+- 12% decrease in login issues-related support requests
+- 25% increase in overall user satisfaction with the platform
+- 18% increase in adoption rates within the first week after implementing interactive tutorials and tooltips

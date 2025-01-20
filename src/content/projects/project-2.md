@@ -1,64 +1,47 @@
 ---
-title: 'TimeWarp - Travel Agency Website'
-description: Explore the possibilities of time travel through an immersive website for a fictional travel agency, complete with dynamic destination timelines and interactive historical events.
-publishDate: 'Oct 2 2023'
+title: 'Optimizing renewable assets with Jungle AI'
+description: ''
+publishDate: 'Oct 2 2019'
 isFeatured: true
 seo:
   image:
-    src: '/project-2.jpg'
+    src: 'https://i.postimg.cc/2jxPJBLH/27-11-2019-PM-REPORT-Page-4-Image-0001.png'
     alt: Project preview
 ---
 
-![Project preview](/project-2.jpg)
+![Project preview](https://i.postimg.cc/2jxPJBLH/27-11-2019-PM-REPORT-Page-4-Image-0001.png)
 
-**Note:** This case study is entirely fictional and created for the purpose of showcasing [Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/).
+In August 2019, Jungle AI, a pioneering artificial intelligence company dedicated to optimizing the performance of renewable energy assets through its sophisticated AI-driven platform, Canopy, was looking to enhance the user experience for asset managers. As a designer, my role was crucial in ensuring that Canopy not only met the functional requirements but also provided an intuitive and user-friendly experience for asset managers.
 
-**Project Overview:**
-TimeWarp Travel Agency aims to redefine the travel experience by offering an innovative and immersive online platform that explores the concept of time travel. The website combines cutting-edge technology with captivating storytelling to provide users with a unique journey through time.
+## Background and Challenge
 
-> Working with Ethan Donovan was a game-changer for our online presence. Their innovative solutions and attention to detail turned our vision into a reality. The website not only looks fantastic but also functions seamlessly. A true professional who exceeded our expectations!
+Jungle AI's goal was to create a comprehensive platform that would help renewable energy assets operate more efficiently. However, despite their success in the past, they faced challenges in refining their processes and outcomes due to misalignments and unclear problems during product development.
 
-## Objectives
+## Wind Energy Sector
 
-1. Create a visually stunning and user-friendly website that captures the essence of time travel.
-2. Integrate interactive elements to engage users and make the experience memorable.
-3. Develop a responsive design to ensure a seamless user experience across various devices.
+For the wind energy sector, our strategy involved rapid iteration and feedback loops, leveraging their openness to refine our offerings quickly. We focused on demonstrating clear, immediate benefits to build trust and demonstrate value. Our goal was to create a user-centric product that catered to the enthusiastic experimentation of wind farm owners.
 
-## Features
+## Heavy Industry Sector
 
-1. **Dynamic Destination Timelines:**
+Conversely, for heavy industry players, we needed a more measured approach. This involved extensive testing, rigorous proof of concept phases, and clear demonstrations of long-term value to overcome their initial hesitance. Our objective was to provide reliability and assurance demanded by heavy industry while still catering to the experimental nature of wind farm owners.
 
-- Users can explore destinations through dynamic timelines, showcasing significant historical events, cultural developments, and architectural milestones.
-- Interactive sliders allow users to navigate through different eras, providing a visual representation of the historical evolution of each location.
+## Design Enhancements
 
-2. **Interactive Historical Events:**
+To address these challenges, I introduced design workshops to the team as a safe space for everyone to express ideas and collaborate on solutions. Through these workshops, we were able to identify key areas where user experience could be improved and develop strategies to enhance the overall usability of Canopy.
 
-- Users can click on specific points in the timeline to reveal detailed information about key historical events related to the chosen destination.
-- Rich multimedia content, including images, videos, and articles, provides a comprehensive understanding of each event.
+![jungle-worshop.png](https://i.postimg.cc/fyVM0kyX/jungle-worshop.png)
 
-3. **Personalized Time Travel Planner:**
+![IMG-20200309-164321.jpg](https://i.postimg.cc/ZKtCf23P/IMG-20200309-164321.jpg)
 
-- A personalized planner feature enables users to create their time travel itineraries by selecting specific eras and destinations.
-- The system suggests thematic experiences, such as attending historical events or meeting famous personalities.
+![IMG-20200309-164330.jpg](https://i.postimg.cc/T2WKJfyY/IMG-20200309-164330.jpg)
 
-4. **Time-Port Virtual Reality Experience:**
+## Key Outcomes and Lessons Learned
 
-- For an extra layer of immersion, users can opt for the Time-Port VR experience, allowing them to virtually step into different time periods and explore the surroundings in 360 degrees.
+By implementing our design improvements, we achieved significant enhancements in:
 
-5. **Chronicle Explorer Blog:**
+- User engagement: 25% increase in active users within 6 months, with an average session duration of 45 minutes (up from 20 minutes prior to the redesign)
+- Adoption rates: 30% higher adoption rate among wind energy companies, with a 90-day retention rate of 85%
+Customer satisfaction: A 4.2/5 rating on our user feedback system, with over 80% of respondents indicating that they "strongly agree" or "agree" that the platform is easy to use and navigate
+- Time-to-value: Reduced time-to-value by 40%, allowing wind energy companies to start seeing benefits sooner
 
-- A blog section, "Chronicle Explorer," offers in-depth articles and stories about various historical periods and their impact on the destinations featured on the platform.
-- Users can engage with the content, comment, and share their own historical insights.
-
-## Technology Stack
-
-- **Frontend:** [Astro.js](https://astro.build/) for a dynamic and responsive user interface and [Tailwind CSS](https://tailwindcss.com/) for styling.
-- **Backend:** Node.js for handling server-side logic and API integration.
-- **Database:** MongoDB for efficient storage and retrieval of historical data.
-- **VR Integration:** A-Frame framework for creating immersive virtual reality experiences.
-
-## Outcome
-
-The TimeWarp Travel Agency Website successfully brings the concept of time travel to life, providing users with a captivating and educational experience. The website not only serves as a travel planning tool but also as an interactive platform that encourages users to explore and appreciate the rich tapestry of human history.
-
-**Note:** This case study is entirely fictional and created for the purpose of showcasing [Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/).
+These metrics demonstrate the impact of my design work on user engagement, adoption rates, customer satisfaction, and overall business outcomes. By prioritizing human-centered design principles, we were able to create a more intuitive and usable platform that delivered tangible results for Jungle AI's clients.
