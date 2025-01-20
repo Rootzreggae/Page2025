@@ -2,42 +2,32 @@
 title: About
 seo:
   title: About Me
-  description: Learn more about the person behind the website and embark on a journey of inspiration and shared experiences.
+  description: Learn more about the person behind the pixel.
   image:
-    src: '/about.jpeg'
-    alt: A person sitting at a desk in front of a computer
+    src: ''
+    alt: ''
 ---
 
-![Alt text for image](/about.jpeg)
+![Friends cooking](https://i.postimg.cc/5NHvHxnc/Manchester-2023-Photo-1.jpg)
 
-**Note!:** This about page is entirely fictional and created for the purpose of showcasing [Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/).
+ I've always been fascinated by technology and how things work. As a kid, I was notorious for disassembling electronic toys to figure out their inner mechanics - much to the dismay of my mother, who would often scold me for opening presents before I even got to play with them. But despite the occasional frustration of taking things apart only to realize I had no idea how to put them back together again, my curiosity drove me to keep learning.
 
-## Ethan Donovan - Web Developer based in Estonia
+ That's when Photoshop caught my eye on a demo CD that came with a magazine. I was hooked from the very start - the endless possibilities of layering, blending, and manipulating images was like nothing I had ever seen before. It was during this time that I also discovered Adobe Illustrator, and it was love at first sight. There's something about creating vector art that just clicked with me.
 
-**Greetings!** I'm Ethan Donovan, a passionate web developer residing in the picturesque landscapes of [Estonia](https://en.wikipedia.org/wiki/Estonia). With a keen eye for design and a love for crafting seamless digital experiences, I bring a unique blend of creativity and technical expertise to the world of web development.
+ As my passion for design grew, so did my online community. I co-founded an art forum with some friends, where we would share our work and ideas. It was an incredible experience - not only did I learn from others, but I also got to showcase my own talents and receive feedback from like-minded individuals. This is when I first started learning HTML and CSS, as I realized that design wasn't just about creating pretty visuals, but also about bringing it to life with code.
 
-## Skills and Expertise
+ My curiosity soon took me down a different path - I became obsessed with video games! Who wouldn't want to create their own characters, worlds, and adventures? So, I dived headfirst into game development using the Mugen engine. It was an incredible learning experience that taught me about design principles, problem-solving, and collaboration.
 
-I specialize in front-end and back-end development, utilizing the latest technologies to build responsive and user-friendly websites. My proficiency includes **HTML**, **CSS**, **JavaScript**, and frameworks such as **Astro.js** for dynamic and interactive user interfaces. On the server side, I'm well-versed in Node.js and have experience with database management systems like MongoDB.
+ After completing my studies in Communication Design at the Lusophone University of Humanities and Technologies in Lisbon, I knew that I wanted to pursue a career in digital product design. My goal has always been to blend creative minds with technology to create solutions that enhance user experiences.
 
-## Innovation and Problem-Solving
+ As a designer, my motivation is simple: I want to add value to businesses by providing teams with a deeper understanding of their customers and the ability to make informed decisions. I achieve this by extracting meaningful conclusions from customer feedback and stakeholder research, and then using those insights to design best-in-class solutions that tackle complex problems.
 
-I thrive on solving complex problems and transforming ideas into functional, elegant websites. Whether it's optimizing performance, implementing new features, or troubleshooting issues, I approach each challenge with enthusiasm and a commitment to delivering high-quality solutions.
+ My approach is centered around creating scalable interfaces and interactions that are not only visually stunning but also user-friendly. I contribute to our design system, ensuring consistency and quality across all products, and work closely with cross-functional teams to lead the design process for core product experiences.
 
-## Global Perspective, Local Impact
+ One of my favorite things about being a designer is identifying areas of improvement and prioritizing them through a design lens. I love working hand-in-hand with designers to refine our approach, ensure coherence, and drive innovation.
 
-Living in Estonia has not only influenced my appreciation for nature and culture but has also shaped my approach to web development. I understand the importance of creating digital solutions that resonate with local audiences while maintaining a global perspective.
+ Collaboration is key in my role - I work closely with engineers, conduct research, and develop design strategies to achieve product goals. My ultimate goal is to create high-quality designs that maintain the design system, provide a seamless user experience, and make a real impact on people's lives.
 
-## Continuous Learning
+ I'm always excited to share my knowledge and enthusiasm with others. When I'm not working, you can find me enjoying calisthenics, indulging in video games, or picking up my pencils to illustrate - the creative spark never truly goes out for me. Above all, I cherish the time spent with my loving family and friends here in Lisbon's South Bay, Portugal - this is where my heart feels most at home.
 
-The dynamic nature of the tech industry inspires me to stay up-to-date with the latest trends and advancements. I'm always eager to expand my skill set and embrace emerging technologies that enhance the functionality and aesthetics of the websites I create.
-
-## Collaboration and Communication
-
-I believe in the power of collaboration and effective communication. Whether working with clients, designers, or fellow developers, I value clear communication to ensure the success of every project.
-
-## Get in Touch
-
-Are you looking to elevate your online presence or bring your digital ideas to life? I'd love to hear from you! Feel free to reach out for collaboration, consultation, or just a friendly chat about all things web development.
-
-_Let's build something amazing together!_
+![Me and friend](https://i.postimg.cc/25dnz2TV/Manchester-2023-Photo.jpg)
