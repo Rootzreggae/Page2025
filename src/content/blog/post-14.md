@@ -1,67 +1,35 @@
 ---
-title: Your Roadmap to Framework Selection Success
+title: Craft in software product design
 excerpt: Choosing the right framework for your web project is a critical decision that can significantly impact the development process and the success of your project. With so many options available, it's essential to consider various factors before making a choice.
-publishDate: 'Jan 11 2024'
+publishDate: 'Sep 11 2024'
 isFeatured: true
 tags:
-  - Web
-  - Guide
+  - Craft
+  - Personal
 seo:
   image:
-    src: '/post-14.jpg'
+    src: 'https://i.postimg.cc/kMRc4vp4/DALL-E-Monozukuri-2024-05-13-2.png'
     alt: Wavy lines
 ---
 
-![Wavy lines](/post-14.jpg)
+![Wavy lines](https://i.postimg.cc/kMRc4vp4/DALL-E-Monozukuri-2024-05-13-2.png)
 
-**Note:** This post was created using Chat GPT to demonstrate the features of the _[Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/)_.
+**Monozukuri (ものづくり)**
 
-**Choosing the right framework** for your web project is a critical decision that can significantly impact the development process and the success of your project. With so many options available, it's essential to consider various factors before making a choice. Here's a step-by-step guide on how to choose the right framework for your web project.
+As someone who's passionate about design, I've always been fascinated by the concept of "monozukuri" (, which roughly translates to "making things"). But it's more than just manufacturing – it's a mindset that embodies excellence, innovation, and attention to detail. In Japan, monozukuri is the philosophy behind everything from automotive manufacturing to traditional crafts like pottery and textile weaving.
 
-> Web frameworks are the architectural blueprints that empower developers to build the digital landscapes of tomorrow.
+For me, craft represents the meticulous application of design thinking principles. It's about understanding user needs, context, functionality, and aesthetics – all while delivering an experience that's both intuitive and delightful. Craft in UX design goes beyond usability; it's about creating interfaces that interact with users on a deeper level, taking into account their emotions and behaviors.
 
-## Understand Your Project Requirements
+At the heart of UX craft is the user themselves. By focusing on empathy, I aim to create experiences that address real-world problems with sensitivity and precision. This involves rigorous testing and iteration, where prototypes are refined based on user feedback, ensuring the final product feels polished and responsive.
 
-Start by thoroughly understanding the specific requirements of your web project. Consider factors such as the project's scope, complexity, and the features you need. Ask questions like:
+The aesthetic aspect of UX craft shouldn't be underestimated – it plays a significant role in shaping the user's emotional response and overall satisfaction. A well-crafted UX design blends visual elements, interactions, and animations to convey a sense of quality and reliability, making everyday interactions enjoyable rather than mundane.
 
-- What is the project's purpose?
-- What are the key functionalities it should have?
-- Are there any specific technical or performance requirements?
+One framework that I find particularly useful in understanding users' needs is the Theory of Jobs to Be Done (JTBD). First coined by Clayton Christensen, JTBD suggests that users are motivated to solve specific problems or "jobs" in their lives. These jobs are often complex and multi-faceted, requiring a combination of tools, skills, and resources to complete.
 
-## Define Your Tech Stack
+A great example of the JTBD is the way people use Airbnb for travel planning and booking. For many travelers, finding the perfect place to stay is not just about booking a hotel room – it's a job that requires researching neighborhoods, reading reviews, and comparing prices. When users find an Airbnb listing that meets their needs (e.g., a cozy apartment in a trendy neighborhood), they feel like they've solved the "job" of finding the perfect accommodation. This experience is not just about booking a hotel room; it's about creating memories, exploring new places, and enjoying experiences with friends and family.
 
-Determine your preferred technology stack. This includes choices for the frontend (HTML, CSS, JavaScript), backend (programming language, database), and any other technologies you plan to use. Your framework should align with your chosen tech stack.
+Craft in UX design is not just about executing a flawless design process; it's about paying meticulous attention to every step and stage of solving a problem. It's about embracing the entire journey, from research and ideation to prototyping and testing, as an opportunity to refine and iterate towards creating something truly exceptional. This means considering not only the end result but also the intermediate steps, questioning assumptions along the way, and being willing to make adjustments as needed.
 
-## Consider Your Team's Expertise
+As someone who's passionate about design, I believe that craft is essential to creating products that meet needs while enhancing lives. By combining the principles of monozukuri with a deep understanding of users' jobs-to-be-done, we can create experiences that truly matter.
 
-Assess the skills and expertise of your development team. Choose a framework that your team is comfortable with or is willing to learn. If your team is experienced in a particular language or framework, it may be more efficient to stick with what they know.
-
-## Community and Ecosystem
-
-The strength and vitality of a framework's community and ecosystem are paramount considerations when making your choice. A thriving community signifies that the framework is actively used and supported by developers worldwide. Here's why this matters.
-
-> Good code is its own best documentation. As you're about to add a comment, ask yourself, 'How can I improve the code so that this comment isn't needed? - **Steve McConnell**
-
-**Support and Problem Solving:** A robust community ensures that you won't be left in the dark when you encounter issues or challenges during development. It's a vast network of developers who are willing to help and share their knowledge. You can turn to forums, Stack Overflow, GitHub discussions, and various online communities for assistance. The more active the community, the faster you're likely to get answers and solutions to your problems.
-
-**Third-Party Libraries and Plugins:** An active ecosystem often means a wealth of third-party libraries, plugins, and extensions that can extend the functionality of your chosen framework. This can significantly speed up development by providing pre-built solutions for common features and functionalities.
-
-**Continuous Improvement:** A large and engaged community usually translates to continuous improvement of the framework. Developers are more likely to contribute bug fixes, enhancements, and new features, leading to faster updates and a more stable platform. These contributions keep the framework up-to-date and aligned with industry standards.
-
-**Tutorials and Learning Resources:** A thriving community often generates a plethora of tutorials, blog posts, video courses, and documentation. This abundance of learning resources can be immensely valuable for both beginners and experienced developers looking to master the framework. It makes the learning curve smoother and promotes the adoption of best practices.
-
-**Long-Term Viability:** A framework with a strong community is more likely to have a longer lifespan. It's reassuring to know that the framework you choose today will still be supported and updated in the years to come, reducing the risk of your project becoming obsolete due to a lack of maintenance.
-
-## Documentation and Learning Resources
-
-Check the quality and availability of documentation and learning resources for the framework. Well-documented frameworks are easier for developers to learn and work with.
-
-## Scalability and Performance
-
-Consider whether the framework can scale to meet your project's future needs. Will it handle increased traffic and data without performance bottlenecks?
-
-## Security
-
-Security is crucial for any web project. Ensure that the framework has security features built in and is actively maintained to address security vulnerabilities promptly.
-
-In conclusion, choosing the right framework for your web project involves a careful evaluation of your project's requirements, your team's expertise, community support, and various technical factors. Taking the time to make an informed decision at the outset can save you time, resources, and headaches as your project progresses.
+Check out Stripe's article on <a href="https://stripe.com/en-pt/sessions/2024/craft-and-beauty-the-business-value-of-form-in-function?utm_source=figmalion&utm_medium=email&utm_campaign=issue-165">Craft & Beauty</a> .
