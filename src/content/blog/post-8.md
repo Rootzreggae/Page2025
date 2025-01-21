@@ -1,10 +1,10 @@
 ---
-title: 'Unveiling the Magic: Exploring the Latest CSS Features'
-excerpt: 'Highlight and explain the newest CSS features or updates. Include examples and demonstrate how these features can enhance the styling and layout of web pages.'
-publishDate: 'October 11 2023'
+title: 'The Power of Demos'
+excerpt: 'A New Approach to Product Design Prototyping.'
+publishDate: 'Jan 1 2024'
 tags:
-  - CSS
-  - Web development
+  - Prototyping
+  - Software designers
 isFeatured: true
 seo:
   image:
@@ -14,73 +14,33 @@ seo:
 
 ![Light lines on a dark background](/post-8.jpg)
 
-**Note:** This post was created using Chat GPT to demonstrate the features of the _[Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/)_.
 
-CSS, the styling powerhouse of the web, is constantly evolving to meet the demands of modern web development. In the ever-expanding landscape of front-end technologies, staying abreast of the latest CSS features is crucial for creating sleek, responsive, and visually stunning websites. Let's take a deep dive into some of the most exciting and powerful CSS features that have emerged in recent times.
+As designers, we're constantly adapting to the ever-changing landscape of product design. In this fast-paced world, it's essential to prioritize communication and collaboration. I'm firm believer that demos add more communication value compared to traditional presentations, particularly when moving beyond initial prototyping stages.
 
-## 1. **Grid Layouts for Responsive Design**
+**The Value of Low-Fidelity Wireframes in Ideation**
 
-CSS Grid Layout has been a game-changer in web design, allowing developers to create complex layouts with ease. It provides a two-dimensional grid system, enabling precise control over both rows and columns. This feature is especially valuable for responsive design, as it facilitates the creation of flexible and dynamic page structures.
+During ideation, low-fidelity wireframes are a game-changer. They allow us to quickly explore multiple ideas without getting bogged down in details. These rough sketches and wireframes help trim down an array of concepts to the most promising ones, giving us a clear direction to follow.
 
-```css
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-```
+Low-fidelity artifacts excel for presentations during early stages, when uncertainty is high. They facilitate discussions, gather feedback, and align team members on potential directions. The focus here is on conveying ideas and concepts rather than showcasing functionality.
 
-## 2. **Custom Properties (CSS Variables)**
+Once the team agrees on the ideas to pursue, it's time to shift gears. I advocate for moving from static presentations to interactive demos. As designers, we should ensure that subsequent stages involve demonstrating the solution in action. This approach provides a tangible experience of the product's functionality, usability, and interaction design.
 
-Custom properties, or CSS variables, bring a new level of flexibility and maintainability to stylesheets. They allow you to define reusable values and apply them throughout your CSS, making it easier to update styles consistently across a project.
+With tools like Figma constantly evolving, prototyping has become an exciting and efficient part of the design process. Prototyping isn't just about creating static images; it's now an integral step that brings ideas to life. By creating interactive prototypes, we allow stakeholders to experience the product firsthand, making feedback more grounded and actionable.
 
-```css
-:root {
-  --primary-color: #3498db;
-}
+Embracing demos over presentations offers several benefits:
 
-.button {
-  background-color: var(--primary-color);
-}
-```
+- Demos provide a real-time look at how the product works, reducing misunderstandings that can arise from static images or descriptions.
 
-## 3. **Dark Mode Styling**
+- They force designers to think through user interactions, transitions, and animations, often overlooked in static designs.
 
-With the rise of dark mode preferences among users, CSS has adapted to provide better support for this feature. The `prefers-color-scheme` media query allows developers to adjust styles based on the user's preferred color scheme.
+- By simulating the user experience, potential problems can be identified and addressed earlier in the process.
 
-```css
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #1a1a1a;
-    color: #ffffff;
-  }
-}
-```
+In my own journey, I've learned that relying solely on presentations can lead to misalignments. For instance, a memory comes to mind when my Product Manager received user feedback on an interaction's behavior that differed from my expectations. Without a demo to illustrate this, the nuances were lost in translation.
 
-### 4. **Scroll Snap for Smooth Navigation**
+We ultimately adopted an interaction pattern familiar to users from competing products, but it highlighted the importance of using demos to convey intricate design decisions effectively.
 
-Scroll Snap enhances the user experience by providing a smooth scrolling effect. It allows you to define specific points within a container to which the scroll should snap, creating a more polished and user-friendly interface.
+I think that it's essential that we adapt to changing landscape of design tools and processes. By integrating engineering practices into our workflow—like building functional prototypes—we expand our horizons beyond static images.
 
-```css
-.container {
-  scroll-snap-type: y mandatory;
-}
+This evolution prepares us to tackle misalignments proactively and ensures that our designs are both beautiful and functional.
 
-.section {
-  scroll-snap-align: start;
-}
-```
-
-### 5. **Responsive Typography with Clamp()**
-
-The `clamp()` function is a powerful addition for achieving responsive typography. It allows you to set a font size that is responsive within a specified range, ensuring readability across various screen sizes.
-
-```css
-h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-}
-```
-
-## Conclusion
-
-As web development continues to evolve, staying informed about the latest CSS features is essential for creating modern and user-friendly interfaces. These features empower developers to build more responsive, visually appealing, and accessible websites. Incorporating these tools into your workflow will not only enhance your development process but also contribute to a richer and more engaging web for users around the globe. Happy coding!
+In a world where change is the only constant, shifting from presentations to demos in product design prototyping is a step towards more effective communication and better products. By doing so, we not only enhance our design process but also deliver more value to our teams and users.

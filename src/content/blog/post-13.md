@@ -1,53 +1,49 @@
 ---
-title: 'A Guide to Web Performance Metrics'
-excerpt: Dive deep into web performance metrics, including tools and techniques for measuring and optimizing loading times. Discuss the significance of metrics like First Contentful Paint, Time to Interactive, and more.
+title: 'Consistency: The Unspoken Rule'
+excerpt: In my opinion, consistency is crucial for creating a seamless user experience..
 publishDate: 'Jan 03 2024'
 tags:
-  - Web
-  - Guide
+  - Personal
+  - Growth
 isFeatured: true
 seo:
   image:
-    src: '/post-13.jpg'
-    alt: Abstract snow
+    src: 'https://i.postimg.cc/d1dtKsC9/sheeps.pngg'
+    alt: Sheep jumping of cliff
 ---
 
-![Abstract snow](/post-13.jpg)
+![Sheep jumping of cliff](https://i.postimg.cc/d1dtKsC9/sheeps.png)
 
-**Note:** This post was created using Chat GPT to demonstrate the features of the _[Dante Astro.js theme functionality](https://justgoodui.com/astro-themes/dante/)_.
+As product designers, we're often faced with feedback like "this isn't consistent with that component in our Design System" or "there's a component that can be reused despite not being the exact solution for the hurdle you're facing." But what does consistency really mean?
 
-In the ever-evolving landscape of the internet, user expectations for fast and responsive websites continue to rise. **Web performance is a critical factor** that directly impacts user experience, search engine rankings, and overall business success. To ensure your website meets these expectations, it's essential to understand and optimize key web performance metrics. In this guide, we'll explore some crucial metrics and offer insights on how to improve them.
+In my opinion, consistency is crucial for creating a seamless user experience. It can be broadly categorized into four main types: visual consistency, functional consistency, internal consistency, and external consistency.
 
-> Web performance is user experience. It's not just about faster pages; it's about creating a smoother, more enjoyable journey for your visitors.
+**Visual Consistency**
 
-## Page Load Time
+Visual consistency refers to the uniformity of aesthetic elements across a digital product. This includes colors, fonts, layout structures, and button styles. For example, if a button that submits forms is always colored green, users will automatically associate this color with the action, speeding up interaction time and reducing errors.
 
-Page load time is the total time it takes for a web page to fully load. This metric is a cornerstone of web performance, as users tend to abandon slow-loading sites. Google, in particular, considers page speed as a ranking factor for search results. To optimize page load time, consider compressing images, leveraging browser caching, and minimizing HTTP requests.
+**Functional Consistency**
 
-## Time to First Byte (TTFB)
+Functional consistency involves ensuring that interactive elements behave in the same way across different parts of the application. If a swipe gesture deletes an item in one part of the app, the same gesture should not archive an item in another. This type of consistency is crucial for accessibility as well, as it supports users with different abilities in understanding and interacting with the product.
 
-TTFB measures the time it takes for a browser to receive the first byte of data from the server. It includes the time spent on server processing, network latency, and data transfer. A low TTFB contributes to faster page load times. To improve TTFB, optimize server response times, utilize content delivery networks (CDNs), and consider server upgrades if necessary.
+**Internal Consistency**
 
-## Render Time
+Internal consistency refers to the harmony within a single system. This means that all components of the product should consistently follow the same rules set within the specific environment of the product. For instance, if a mobile app and its web version are designed from the same set of internal rules, users can switch between the two platforms effortlessly.
 
-Render time focuses on how quickly a web page can render and display content. This metric is crucial for providing a seamless user experience. Optimize render time by minimizing render-blocking resources, optimizing CSS and JavaScript, and utilizing techniques like lazy loading for images.
+**External Consistency**
 
-## Mobile Performance
+External consistency refers to the consistency of a product with other products in the market or within a single company's range of products. It ensures that users feel at home with a new product based on their previous experiences with other similar products. Apple is a prime example of a company that excels at external consistency, with their software and hardware products all having a similar look and feel.
 
-With the increasing prevalence of mobile users, optimizing web performance for mobile devices is paramount. Google's mobile-first indexing means that mobile performance directly influences search rankings. Ensure your website is responsive, utilize mobile-friendly design practices, and prioritize mobile performance metrics such as mobile page speed and mobile-friendliness.
+![Cover of the book Don't Make me Think by Steve Krug](https://i.postimg.cc/wBf7jg9m/Don-t-Make-Me-Think-Hero-1.png)
 
-## Resource Utilization
+<blockquote class="mb-10 sm:mb-12 sm:text-2xl">Steve Krug's book "Don't Make Me Think" emphasizes the importance of recognition over recall, highlighting how well-structured design can ease user navigation and understanding. However, he also notes that consistency is not always an absolute good. "You often hear consistency cited as an absolute good... But there will be cases where things will be clearer if you make them slightly inconsistent." </blockquote>
 
-Monitoring resource utilization involves tracking how efficiently your website uses server resources, such as CPU and memory. Overloaded servers can lead to slower response times and degraded user experience. Regularly audit and optimize your website's code, databases, and server configurations to ensure efficient resource utilization.
+![Potted-Plants-1.png](https://i.postimg.cc/Qt7WtCSy/DALL-E-May-13-Potted-Plants-1.png)
 
-## Conversion Rate and Bounce Rate
+**When is it Okay to Break Consistency?**
 
-Web performance directly affects user engagement and conversion rates. Slow-loading pages can result in higher bounce rates and lower conversion rates. Use tools like Google Analytics to track user behavior, analyze bounce rates, and identify pages that may need performance improvements.
-
-## Web Vitals
-
-Google's Web Vitals initiative introduced three core metrics – Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS). These metrics focus on key aspects of user experience, including loading performance, interactivity, and visual stability. Aim to optimize these metrics to enhance overall user satisfaction and meet Google's performance expectations.
-
-## Conclusion
-
-Prioritizing web performance metrics is essential for creating a positive user experience, improving search engine rankings, and achieving business goals. Regularly monitor and optimize these metrics to ensure your website not only meets but exceeds user expectations in an ever-competitive online environment. By implementing best practices and staying informed about evolving performance standards, you can future-proof your website and provide a seamless experience for your visitors.
+Through my experiences, I've learned that deviating from established patterns can sometimes be justified or even necessary. Here are a few instances:
+- User Feedback: If users report that competitor designs offer a more efficient experience, this is a critical signal that our current designs may be falling short. Adapting to incorporate successful patterns from competitors can significantly enhance user satisfaction and usability (Jakob's Law).
+- Innovation: The rapid pace of technological advancement necessitates innovation. Sticking strictly to existing designs can stifle creativity and hinder progress. Introducing new design solutions can be a game-changer, especially when catching up or surpassing competitors.
+- Experimentation: Experimentation is a cornerstone of improvement in UX design. When experiments reveal new patterns that resolve multiple user issues, it's a clear indication that these innovations should be adopted.
+In these cases, breaking consistency isn't just acceptable; it's imperative for growth and user satisfaction. As product designers, we must balance the comfort of familiarity with the necessity of innovation, ensuring our designs remain both intuitive and forward-thinking.
