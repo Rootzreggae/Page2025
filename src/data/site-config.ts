@@ -88,7 +88,7 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        title: 'A Software Product Designer, currently open for new challenges.',
+        title: 'A Software Product Designer, currently open for new challenges. Previously Grafana, Jungle AI and Aptoide.',
         text: '',
         image: {
             src: '',
