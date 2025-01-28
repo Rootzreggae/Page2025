@@ -1,6 +1,6 @@
 ---
 title: Fixing the Symptoms, Not the Source - The Dangers of Quick Fixes
-excerpt: Designing for users like DevOps engineers and system administrators.
+excerpt: Innovation and customer choice.
 publishDate: 'Jan 28 2025'
 tags:
   - Root cause
