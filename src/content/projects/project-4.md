@@ -47,6 +47,32 @@ After completing the initial design phase, which included sketching and brainsto
 
 <iframe width="100%" height="600" src="https://www.youtube.com/embed/IpW2zfMEn3g?si=uAx2gmkIx-amv12P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+## Exploring and refining the onboarding
+
+To ensure we're on the right track, I share and ask for feedback at every stage, testing with users in a small number of iterations, and iterating on our approach based on what works best.
+
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/vyyb227mI0s?si=1JAfPLGBPlmtjW0I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+When exploring solution space, I'm not afraid to diverge and try different approaches. This early experimentation allows me to test assumptions, learn from failures, and converge on the best fit – all while keeping deadlines & technical feasibility in mind.
+
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/CdNAqIURkxw?si=Rbje_3HV_QQDkpeP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+As a designer, I strive to be a key contributor to our design system by continually reusing and refining existing components and patterns. While I'm always critical of any pattern that drifts from established usability best practices, I also aim to identify opportunities to innovate and propose new patterns that can help grow and strengthen our design system – ultimately making it more robust and flexible for future iterations.
+
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/wSG5aTCFv-U?si=55MtARMqu7AmOj59" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+As a designer, I aim to anticipate all possible scenarios, including unhappy paths. To achieve this, I collaborate with the team and reflect on myself: What if a user encounters an issue during their journey? What happens when something goes wrong due to user action? And what if technical issues arise? By exploring these questions, I design solutions that cover both happy and unexpected paths.
+
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/q0Yd8Cz-WMY?si=foPskH72QHVRtcbd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+I don't hesitate to share my imperfect ideas and failures, often with the team. It's at this stage where I aim to foster a culture of shared understanding and inclusive design, but more importantly, it's these moments that help me build trust with the team - by embracing vulnerability and openness.
+
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/YkYUMjo2PV4?si=4jbWLCZ4I6mne9Pi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+By sharing early with stakeholders, I ensure that everyone is aligned on whether the proposed solution can be delivered within the set deadline and meets the business goals. This open communication helps us gauge feasibility and make informed decisions, reducing the risk of costly rework or scope creep.
+
+<iframe width="100%" height="600" src="https://www.youtube.com/embed/JGvyDOPvtbA?si=aaNDWLUtUsDJlBqy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 In my design process, I balanced my time between crafting designs and interactions and diving into the technical nuances of OpenTelemetry (<a href='https://opentelemetry.io/'>OTel</a>) and our Faro web SDK (<a href='https://grafana.com/oss/faro/'>Faro</a>). I committed fully to building and sharing new features and components, while contributing back to Grafana Labs design system.
 
 This approach significantly bolstered trust among product managers (PMs), and engineers, accelerating the project far more effectively than static mockups or low-fidelity prototypes ever could.
