@@ -51,4 +51,6 @@ Based on this direction, I developed initial mockups of the revised webpage. The
 
 This iterative design and feedback cycle brought us closer to a concept that we believe significantly improves upon the previous version in terms of usability and clarity. The next logical step involves translating these refined designs into functional code.
 
-My work in progress of a <a href="https://bvl6pfizeegskbivf.lite.vusercontent.net/">coded version</a>.
+![coded webpage](https://i.postimg.cc/pL2D4VWx/SCR-20250411-iunz.png)
+
+My work in progress of a <a href="hhttps://cozy-pasca-0ab03a.netlify.app/">coded version</a>.
