@@ -53,4 +53,4 @@ This iterative design and feedback cycle brought us closer to a concept that we 
 
 ![coded webpage](https://i.postimg.cc/pL2D4VWx/SCR-20250411-iunz.png)
 
-My work in progress of a <a href="hhttps://cozy-pasca-0ab03a.netlify.app/">coded version</a>.
+My work in progress of a <a href="https://cozy-pasca-0ab03a.netlify.app/">coded version</a>.
