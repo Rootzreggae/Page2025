@@ -47,7 +47,7 @@ Throughout this visual exploration, accessibility was a core principle, not an a
 Based on this direction, I developed initial mockups of the revised webpage. These weren't final designs but starting points for discussion and refinement. Through an iterative process, I shared these concepts with Michael, gathering his feedback on how effectively the new layouts surfaced critical information compared to the existing setup. This collaborative loop allowed us to quickly pinpoint areas for improvement and refine the visual language and information hierarchy. To ensure the proposed solution would function effectively across different user environments, I also developed responsive designs, considering layouts for three key breakpoints (desktop, tablet, and mobile).
 
 ![breakpoints](https://i.postimg.cc/x8HPvm0R/SCR-20250406-kcmf.jpg)
-![full page](https://i.postimg.cc/9fpK9vxM/SCR-20250406-kgvo.jpg)
+![full page](https://i.postimg.cc/Y28DWby6/SCR-20250412-jfoh.png)
 
 This iterative design and feedback cycle brought us closer to a concept that we believe significantly improves upon the previous version in terms of usability and clarity. The next logical step involves translating these refined designs into functional code.
 
