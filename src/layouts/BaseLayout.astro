@@ -29,9 +29,9 @@ const { showHeader = true, ...head } = Astro.props;
             {showHeader && <Header />}
             <main class="grow w-full max-w-3xl mx-auto">
                 <slot />
-                <Analytics />
             </main>
             <Footer />
         </div>
+        <Analytics />
     </body>
 </html>
