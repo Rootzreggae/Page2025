@@ -13,9 +13,7 @@ seo:
 
 TL:DR: There's a link for poc demo for this project <a href='https://kzmlp8p7l52gway5174b.lite.vusercontent.net/login'>here</a> if you don't wish to read everything.
 
-Sunday 20th April 2025, it's morning, and I'm checking my email for positive messages on the sea of 'unfortunately we won't proceed with your application' emails. I decided to start a new project as a way to leverage my knowledge, shape what I want to do, and just have fun building something.
-
-I came across a conversation on a platform between two engineers. The first was inquiring about API key management. They wanted to learn what strategies other devs were using to accomplish this task. Then one of the participants mentioned using different tools to solve the problem, noting it wasn't ideal but was good enough to get by.
+I came across a conversation on a platform between two friends who are engineers. The first was inquiring about API key management. They wanted to learn what strategies other devs were using to accomplish this task. Then one of the participants mentioned using different tools to solve the problem, noting it wasn't ideal but was good enough to get by.
 
 I found that intriguing. I did some research on tools that manage APIs and most of them feel like a Swiss army knife. They allow API key management but also do a lot of other API-related tasks.
 
