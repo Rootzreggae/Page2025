@@ -11,7 +11,7 @@ seo:
 
 ![keystrok-poc](https://i.postimg.cc/GtLGJstw/SCR-20250423-ogef.png)
 
-TL:DR: There's a link for poc demo for this project <a href='https://kzml2vpd969s8644qckw.lite.vusercontent.net/'>here</a> if you don't wish to read everything.
+TL:DR: There's a link for poc demo for this project <a href='https://kzmlp8p7l52gway5174b.lite.vusercontent.net/login'>here</a> if you don't wish to read everything.
 
 Sunday 20th April 2025, it's morning, and I'm checking my email for positive messages on the sea of 'unfortunately we won't proceed with your application' emails. I decided to start a new project as a way to leverage my knowledge, shape what I want to do, and just have fun building something.
 
@@ -70,4 +70,4 @@ Looking ahead, I envision Keystrok evolving to include team collaboration featur
 
 Working on this project has already taught me so much about security concepts and user experience considerations in technical tools. I've learned that simplifying complex security tasks doesn't mean dumbing them down—it means making them more accessible without sacrificing functionality. I will continue evolving this project and eventually release as open source.
 
-I have a working demo poc <a href='https://kzml2vpd969s8644qckw.lite.vusercontent.net/'>here</a>. For now, I'll keep the repository for this tool private, until I get more knowledgeable about security and get more feedback from testing sessions. I will continue to work and grow this tool and see where it leads. If you are a hiring manager looking for a passionate product designer for your team drop a message at [my email](mailto:aosparesdetres@gmail.com)
+I have a working demo poc <a href='https://kzmlp8p7l52gway5174b.lite.vusercontent.net/login'>here</a>. For now, I'll keep the repository for this tool private, until I get more knowledgeable about security and get more feedback from testing sessions. I will continue to work and grow this tool and see where it leads. If you are a hiring manager looking for a passionate product designer for your team drop a message at [my email](mailto:aosparesdetres@gmail.com)
