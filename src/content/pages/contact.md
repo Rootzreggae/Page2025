@@ -12,3 +12,7 @@ Feel free to drop me an email at [nilsongaspar@omg.lol](mailto:nilsongaspar@omg.
 
 _Social Media:_
 Connect with me on social media as well. Find me on [LinkedIn](https://www.linkedin.com/in/nilsongaspar/).
+
+_Download my CV:_
+
+<a href="./assets/files/Nilson GasparCV.pdf" download>Download my CV</a>
