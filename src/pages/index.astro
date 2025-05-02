@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
+import HomeHero from '../components/HomeHero.astro';
 import Carousel from '../components/Carousel.astro';
 import siteConfig from '../data/site-config';
 import { sortItemsByDateDesc } from '../utils/data-utils';
@@ -12,6 +12,6 @@ const projects = (await getCollection('projects')).sort(sortItemsByDateDesc);
 ---
 
 <BaseLayout description={siteConfig.description} image={siteConfig.image}>
-    <Hero />
+    <HomeHero />
     <Carousel />
 </BaseLayout>

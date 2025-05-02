@@ -340,171 +340,178 @@ const {
 </style>
 
 <script>
-// Adaptive carousel functionality that handles different image orientations
-function setupAdaptiveCarousels() {
-  const carousels = document.querySelectorAll('.adaptive-carousel');
-  
-  carousels.forEach(carousel => {
-    const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
-    const prevButton = carousel.querySelector('.prev-button');
-    const nextButton = carousel.querySelector('.next-button');
-    
-    if (slides.length === 0) return;
-    
-    let currentIndex = 0;
-    
-    // Show the first slide initially
-    slides[0].style.display = 'flex';
-    
-    // Function to detect and adapt to image orientation
-    function handleImageOrientation() {
-      slides.forEach(slide => {
-        const img = slide.querySelector('img');
-        if (img && img.complete) {
-          adaptToImageFormat(img, slide);
-        } else if (img) {
-          img.onload = () => adaptToImageFormat(img, slide);
-        }
-      });
-    }
-    
-    // Adapt container based on image format
-    function adaptToImageFormat(img, slide) {
-      const container = carousel.querySelector('.carousel-container');
-      if (!container) return;
-      
-      // Reset any previous adjustments
-      container.style.height = '';
-      
-      if (img.naturalWidth > img.naturalHeight) {
-        // Landscape image
-        slide.classList.add('landscape');
-        slide.classList.remove('portrait');
-      } else {
-        // Portrait image
-        slide.classList.add('portrait');
-        slide.classList.remove('landscape');
-        
-        // For portrait images, adjust container height if needed
-        const aspectRatio = img.naturalHeight / img.naturalWidth;
-        if (aspectRatio > 1.5) { // Very tall portrait
-          const width = container.offsetWidth;
-          container.style.height = `${width * 1.2}px`; // Limit height for very tall images
-        }
-      }
-    }
-    
-    function showSlide(index) {
-      // Hide all slides
-      slides.forEach(slide => slide.style.display = 'none');
-      
-      // Show the current slide
-      slides[index].style.display = 'flex';
-      
-      // Update indicator
-      const currentSlideEl = carousel.querySelector('.current-slide');
-      if (currentSlideEl) {
-        currentSlideEl.textContent = index + 1;
-      }
-      
-      // Update description
-      const descriptionEl = carousel.querySelector('.carousel-description');
-      const currentSlide = slides[index];
-      if (descriptionEl && currentSlide) {
-        const description = currentSlide.getAttribute('data-description');
-        descriptionEl.textContent = description || '';
-      }
-      
-      // Adapt to the current image's orientation
-      const currentImg = slides[index].querySelector('img');
-      if (currentImg) {
-        if (currentImg.complete) {
-          adaptToImageFormat(currentImg, slides[index]);
-        } else {
-          currentImg.onload = () => adaptToImageFormat(currentImg, slides[index]);
-        }
-      }
-    }
-    
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }
-    
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      showSlide(currentIndex);
-    }
-    
-    // Add event listeners
-    if (prevButton) {
-      prevButton.addEventListener('click', prevSlide);
-    }
-    
-    if (nextButton) {
-      nextButton.addEventListener('click', nextSlide);
-    }
-    
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        currentIndex = index;
-        showSlide(currentIndex);
-      });
-    });
-    
-    // Add keyboard navigation
-    carousel.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') prevSlide();
-      if (e.key === 'ArrowRight') nextSlide();
-    });
-    
-    // Add touch support
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    carousel.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-    
-    carousel.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      
-      const difference = touchStartX - touchEndX;
-      const threshold = 50;
-      
-      if (Math.abs(difference) > threshold) {
-        if (difference > 0) {
-          nextSlide();
-        } else {
-          prevSlide();
-        }
-      }
-    }, { passive: true });
-    
-    // Initialize image orientation handling
-    handleImageOrientation();
-    
-    // Initialize description
-    if (slides.length > 0) {
-      const descriptionEl = carousel.querySelector('.carousel-description');
-      if (descriptionEl) {
-        const description = slides[0].getAttribute('data-description');
-        descriptionEl.textContent = description || '';
-      }
-    }
-    
-    // Handle window resize
-    window.addEventListener('resize', handleImageOrientation);
+  // Remove any TypeScript imports
+</script>
+
+<script is:inline define:vars={{ }}>  
+  // Wait for DOM to be ready
+  document.addEventListener('astro:page-load', () => {
+    setupAdaptiveCarousels();
   });
-}
 
-// Initialize carousels in different scenarios to ensure they work
-if (document.readyState === 'loading') {
+  function setupAdaptiveCarousels() {
+    const carousels = document.querySelectorAll('.adaptive-carousel');
+    
+    carousels.forEach((carousel) => {
+      const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+      const prevButton = carousel.querySelector('.prev-button');
+      const nextButton = carousel.querySelector('.next-button');
+      
+      if (slides.length === 0) return;
+      
+      let currentIndex = 0;
+      
+      // Show the first slide initially
+      if (slides[0]) {
+        slides[0].style.display = 'flex';
+      }
+      
+      // Function to detect and adapt to image orientation
+      function handleImageOrientation() {
+        slides.forEach((slide) => {
+          const img = slide.querySelector('img');
+          if (!img) return;
+          
+          if (img.complete) {
+            adaptToImageFormat(img, slide);
+          } else {
+            img.onload = () => adaptToImageFormat(img, slide);
+          }
+        });
+      }
+      
+      // Adapt container based on image format
+      function adaptToImageFormat(img, slide) {
+        const container = carousel.querySelector('.carousel-container');
+        if (!container) return;
+        
+        // Reset any previous adjustments
+        container.style.height = '';
+        
+        if (img.naturalWidth > img.naturalHeight) {
+          // Landscape image
+          slide.classList.add('landscape');
+          slide.classList.remove('portrait');
+        } else {
+          // Portrait image
+          slide.classList.add('portrait');
+          slide.classList.remove('landscape');
+          
+          // For portrait images, adjust container height if needed
+          const aspectRatio = img.naturalHeight / img.naturalWidth;
+          if (aspectRatio > 1.5) { // Very tall portrait
+            const width = container.offsetWidth;
+            container.style.height = `${width * 1.2}px`; // Limit height for very tall images
+          }
+        }
+      }
+      
+      function showSlide(index) {
+        // Hide all slides
+        slides.forEach((slide) => {
+          slide.style.display = 'none';
+        });
+        
+        // Show the current slide
+        const currentSlide = slides[index];
+        if (currentSlide) {
+          currentSlide.style.display = 'flex';
+        }
+        
+        // Update indicator
+        const currentSlideEl = carousel.querySelector('.current-slide');
+        if (currentSlideEl) {
+          currentSlideEl.textContent = String(index + 1);
+        }
+        
+        // Update description
+        const descriptionEl = carousel.querySelector('.carousel-description');
+        if (descriptionEl && currentSlide) {
+          const description = currentSlide.getAttribute('data-description');
+          descriptionEl.textContent = description || '';
+        }
+        
+        // Adapt to the current image's orientation
+        if (currentSlide) {
+          const currentImg = currentSlide.querySelector('img');
+          if (currentImg) {
+            if (currentImg.complete) {
+              adaptToImageFormat(currentImg, currentSlide);
+            } else {
+              currentImg.onload = () => adaptToImageFormat(currentImg, currentSlide);
+            }
+          }
+        }
+      }
+      
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+      }
+      
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
+      }
+      
+      // Add event listeners
+      if (prevButton) {
+        prevButton.addEventListener('click', prevSlide);
+      }
+      
+      if (nextButton) {
+        nextButton.addEventListener('click', nextSlide);
+      }
+      
+      // Add keyboard navigation
+      carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+      });
+      
+      // Add touch support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      
+      carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        
+        const difference = touchStartX - touchEndX;
+        const threshold = 50;
+        
+        if (Math.abs(difference) > threshold) {
+          if (difference > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+      }, { passive: true });
+      
+      // Initialize image orientation handling
+      handleImageOrientation();
+      
+      // Initialize description
+      if (slides.length > 0) {
+        const descriptionEl = carousel.querySelector('.carousel-description');
+        if (descriptionEl) {
+          const description = slides[0].getAttribute('data-description');
+          descriptionEl.textContent = description || '';
+        }
+      }
+      
+      // Handle window resize
+      window.addEventListener('resize', handleImageOrientation);
+    });
+  }
+  
+  // Also initialize on regular DOM content loaded for non-view transitions
   document.addEventListener('DOMContentLoaded', setupAdaptiveCarousels);
-} else {
-  setupAdaptiveCarousels();
-}
-
-// Also run after a delay to handle hydration scenarios
-setTimeout(setupAdaptiveCarousels, 200);
+  
+  // Run after a short delay to ensure everything is ready
+  setTimeout(setupAdaptiveCarousels, 200);
 </script>
