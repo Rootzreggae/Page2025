@@ -13,8 +13,8 @@ const allProjects = await getCollection('projects');
 
 // Process projects to extract the first image for each
 const projectsWithImages = allProjects.map(project => {
-    // For 'open-source-designer' project, use the specified image URL
-    if (project.id === 'open-source-designer') {
+    // For 'open-source-designer-2' project, use the specified image URL
+    if (project.id === 'open-source-designer-2') {
         return {
             ...project,
             firstImageUrl: 'https://i.postimg.cc/VsF7VSZF/SCR-20250413-mwar.png'
@@ -39,7 +39,7 @@ const projectsWithImages = allProjects.map(project => {
 // Define the specific order for projects
 const projectOrder = [
     'keystrok',                   // Keystrok - API key management tool
-    'open-source-designer',       // Contributing to open source as a product designer part 2
+    'open-source-designer-2',     // Contributing to open source as a product designer part 2
     'open-source-designer-1',     // Contributing to open source as a product designer part 1
     'grafana-rum',                // Grafana Cloud frontend application
     'grafana-apm',                // Grafana Cloud Application Observability
