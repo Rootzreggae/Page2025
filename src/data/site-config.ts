@@ -47,11 +47,11 @@ const siteConfig: SiteConfig = {
     },
     headerNavLinks: [
         {
-            text: 'Home',
+            text: 'NILSON GASPAR',
             href: '/'
         },
         {
-            text: 'Projects',
+            text: 'Works',
             href: '/projects'
         },
         {
@@ -59,20 +59,11 @@ const siteConfig: SiteConfig = {
             href: '/blog'
         },
         {
-            text: 'Tags',
-            href: '/tags'
-        }
-    ],
-    footerNavLinks: [
-        {
             text: 'About',
             href: '/about'
-        },
-        {
-            text: 'Contact',
-            href: '/contact'
         }
     ],
+    footerNavLinks: [], // Empty array to remove footer nav links
     socialLinks: [
         {
             text: '',
@@ -88,22 +79,17 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        title: 'A Software Product Designer, currently open for new challenges. Previously Grafana, Jungle AI and Aptoide.',
+        title: 'Olá,Im a product designer based in Lisbon with an academic background in Communication Design. Previously Grafana, Jungle AI and Aptoide. Learn more about me or jump straight to the work.',
         text: '',
         image: {
             src: '',
             alt: ''
         },
-        actions: [
-            {
-                text: 'Get in Touch',
-                href: '/contact'
-            }
-        ]
+        actions: [] // Empty actions array to remove the button
     },
 
     postsPerPage: 8,
-    projectsPerPage: 8
+    projectsPerPage: 12
 };
 
 export default siteConfig;

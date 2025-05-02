@@ -1,5 +1,5 @@
 ---
-title: 'Keystrok - API Key Management Tool'
+title: 'API Key Management, Simplified'
 description: ''
 publishDate: 'Apr 23 2025'
 isFeatured: true
@@ -9,11 +9,47 @@ seo:
     alt: Project preview
 ---
 
-![keystrok-poc](https://i.postimg.cc/GtLGJstw/SCR-20250423-ogef.png)
+import TextWithCarousel from '../../components/TextWithCarousel.astro';
+import CarouselWithText from '../../components/CarouselWithText.astro';
+import CaseStudyImage from '../../components/CaseStudyImage.astro';
+
+
+![keystrok-poc](https://i.postimg.cc/dtyCVfW3/SCR-20250430-rchp.png)
+
+**Self hosted and open source**
 
 TL:DR: There's a link for poc demo for this project <a href='https://kzmlp8p7l52gway5174b.lite.vusercontent.net/login'>here</a> if you don't wish to read everything.
 
-I came across a conversation on a platform between two friends who are engineers. The first was inquiring about API key management. They wanted to learn what strategies other devs were using to accomplish this task. Then one of the participants mentioned using different tools to solve the problem, noting it wasn't ideal but was good enough to get by.
+
+<TextWithCarousel
+  images={[
+    { src: "https://i.postimg.cc/MpyZ4TRD/image.png", alt: "Conversation that inspired the project" },
+    { src: "https://i.postimg.cc/SKs591yM/image.png", alt: "Swiss army knife APIdog" },
+    { src: "https://i.postimg.cc/sDLK8fyv/image.png", alt: "Postman" }
+  ]}
+>
+  ## The challenge
+Engineers struggle with tracking, managing, and rotating API keys across platforms, leading to security risks and wasted time. Existing solutions are expensive "Swiss army knives" with unnecessary complexity.
+  ## The approach
+  I set out to create Keystrok - a focused, open-source tool that does one thing exceptionally well: manage API keys across platforms while providing:
+  - Visual dashboard with expiration date monitoring
+  - Automated key rotation with notifications
+  - Simplified interface accessible to technical and non-technical team members
+  - Cross-platform compatibility in one centralized system
+</TextWithCarousel>
+
+**Process & Development**
+
+## Initial Research & Ideation
+
+I wanted to learn what strategies other devs were using to accomplish this task of managing . Then one of the participants mentioned using different tools to solve the problem, noting it wasn't ideal but was good enough to get by.
+
+<CaseStudyImage
+  src="https://i.postimg.cc/TY2HB2S6/image.png"
+  alt="Call out survey"
+  caption="Engaging with user base in a platform"
+/>
+
 
 I found that intriguing. I did some research on tools that manage APIs and most of them feel like a Swiss army knife. They allow API key management but also do a lot of other API-related tasks.
 
@@ -31,17 +67,33 @@ That made sense at the time and it does now. It kind of re-arranged the way I th
 
 I wrote down what I think are valuable features for a v0 proof of concept and created a plan around them. There's the design part and the technical part.
 
-As a designer who feels pretty comfortable with HTML, CSS, and basic JavaScript, I figured with some AI tool help I can build something that works close to a full-fledged product.
+## Design & Development
 
-![wireframe-1](https://i.postimg.cc/K8dHjKMZ/case-study-2.png)
+I have knowledge in HTML, CSS, and basic JavaScript, so I figured with some AI help I can build something that works well for a v0.
 
-![wireframe-2](https://i.postimg.cc/rmZkh1mS/case-study-1.png)
+<CarouselWithText
+  images={[
+    { src: "https://i.postimg.cc/JngP6hKQ/Frame.png", alt: "Idle dashboard layout" },
+    { src: "https://i.postimg.cc/QN96BpxY/Frame1.png", alt: "API key management interface" },
+    { src: "https://i.postimg.cc/T39Q80C1/Frame2.png", alt: "Adding a platform" },
+    { src: "https://i.postimg.cc/NjfmXckG/Frame4.png", alt: "Key inventory exploration" }
+  ]}
+>
+  ## Design Process
 
-I can design, but what about aspects like security and databases? I have close to no knowledge on the subject, but I am determined to learn as I go, making mistakes but bringing this idea to life.
+  I started sketching out user flows and wireframes to envision how developers would interact with the tool. My primary focus was on creating an intuitive interface that would:
 
-I inquired on Lemmy, Reddit and developer friends about their experience managing API keys, and sure enough there's frustration around keeping track of and managing keys. One friend, who leads engineering at a mid-sized SaaS company, told me they once had a security incident because an expired API key wasn't properly documented and someone reused it in production. Another mentioned spending nearly two hours trying to track down which developer had created a particular key that was hitting rate limits.
+  - Provide immediate visibility into key expiration status
+  - Simplify the rotation process with clear action buttons
+  - Organize keys by platform for easy filtering
+  - Include notification settings that wouldn't overwhelm users
 
-![UI-work](https://i.postimg.cc/TPhTMNDK/SCR-20250423-ofmj.png)
+  After several iterations based on feedback from developer friends, I refined the UI to emphasize the most critical information and actions.
+</CarouselWithText>
+
+What about aspects like security and databases? I have close to no knowledge on the subject, but I am determined to learn as I go, making mistakes but ultimately bringing this idea to life.
+
+I made a survey targeting developers on Lemmy, Reddit and developer friends about their experience managing API keys, and sure enough there's frustration around keeping track of and managing keys. One friend, who leads engineering at a mid-sized SaaS company, told me they once had a security incident because an expired API key wasn't properly documented and someone reused it in production. Another mentioned spending nearly two hours trying to track down which developer had created a particular key that was hitting rate limits.
 
 I decided to name the tool 'Keystrok', as it helps you manage, monitor, and automatically rotate API keys across all your platforms, reducing security risks and saving you valuable time.
 
@@ -68,4 +120,4 @@ Looking ahead, I envision Keystrok evolving to include team collaboration featur
 
 Working on this project has already taught me so much about security concepts and user experience considerations in technical tools. I've learned that simplifying complex security tasks doesn't mean dumbing them down—it means making them more accessible without sacrificing functionality. I will continue evolving this project and eventually release as open source.
 
-I have a working demo poc <a href='https://kzmlp8p7l52gway5174b.lite.vusercontent.net/login'>here</a>. For now, I'll keep the repository for this tool private, until I get more knowledgeable about security and get more feedback from testing sessions. I will continue to work and grow this tool and see where it leads. If you are a hiring manager looking for a passionate product designer for your team drop a message at [my email](mailto:aosparesdetres@gmail.com)
+I have a working demo v0 available here <a href='https://kzmlp8p7l52gway5174b.lite.vusercontent.net/login'>here</a>. For now, I'll keep the repository for this tool private, until I get more knowledgeable about security and get more feedback from testing sessions. I will continue to work and grow this tool and see where it leads. If you are a hiring manager looking for a passionate product designer for your team drop a message at [my email](mailto:aosparesdetres@gmail.com)

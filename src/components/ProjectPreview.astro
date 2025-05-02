@@ -2,23 +2,122 @@
 import { type CollectionEntry } from 'astro:content';
 import ArrowRight from '../icons/ArrowRight.astro';
 
-type Props = { project: CollectionEntry<'projects'>; class?: string; headingLevel?: 'h2' | 'h3' };
+type Props = { project: CollectionEntry<'projects'>; class?: string; headingLevel?: 'h2' | 'h3'; darkMode?: boolean };
 
-const { project, class: className, headingLevel = 'h2' } = Astro.props;
-const { title, description } = project.data;
+const { project, class: className, headingLevel = 'h2', darkMode = false } = Astro.props;
+const { title, description, seo } = project.data;
 const TitleTag = headingLevel;
+
+// Extract the first image from the project content
+const getFirstImage = () => {
+  // Extract the raw markdown content
+  const rawContent = project.body || '';
+  
+  // Strategy 1: Try to find an image right after the title on its own line (most common pattern)
+  const titleAndFirstImagePattern = new RegExp(`${title}\s*\n+\s*!\[.*?\]\((https?:\/\/[^\s\)]+)\)`, 'i');
+  const titleImageMatch = rawContent.match(titleAndFirstImagePattern);
+  if (titleImageMatch && titleImageMatch[1]) {
+    return titleImageMatch[1];
+  }
+  
+  // Strategy 2: Find the first image anywhere after title
+  const titlePos = rawContent.indexOf(title);
+  if (titlePos >= 0) {
+    const contentAfterTitle = rawContent.substring(titlePos + title.length);
+    const imgMatches = [...contentAfterTitle.matchAll(/!\[(?:.*?)\]\((https?:\/\/[^\s\)]+)\)/g)];
+    if (imgMatches && imgMatches.length > 0) {
+      return imgMatches[0][1];
+    }
+  }
+  
+  // Strategy 3: Find any image in the content
+  const allImgMatches = [...rawContent.matchAll(/!\[(?:.*?)\]\((https?:\/\/[^\s\)]+)\)/g)];
+  if (allImgMatches && allImgMatches.length > 0) {
+    return allImgMatches[0][1];
+  }
+  
+  // Fallback to SEO image if available
+  if (seo && seo.image && seo.image.src) {
+    return seo.image.src;
+  }
+  
+  return null;
+};
+
+// Extract category from project filename or use a default
+const getCategory = () => {
+  const filename = project.id;
+  // Convert filename to title case for category
+  // Remove hyphens and capitalize first letter of each word
+  const category = filename.split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+  return category;
+};
+
+const thumbnailUrl = getFirstImage();
+const category = getCategory();
+const projectUrl = `/projects/${project.id}/`;
 ---
 
-<a class:list={['flex justify-between items-start gap-8 group', className]} href={`/projects/${project.id}/`}>
-    <div class="grow">
-        <TitleTag
-            class="text-xl leading-tight font-serif font-medium group-hover:underline group-hover:decoration-dashed group-hover:underline-offset-4 group-hover:decoration-1 sm:text-2xl"
-        >
-            {title}
-        </TitleTag>
-        {description && <div class="mt-1 text-sm leading-normal">{description}</div>}
+<div class:list={['group block hover:opacity-95 transition-all duration-300', className]} data-project-card>
+  <a href={projectUrl} class="project-link block" data-project-link>
+    <div class="overflow-hidden rounded-lg mb-5 aspect-[16/9]">
+      {thumbnailUrl && (
+        <img 
+          src={thumbnailUrl} 
+          alt={`Thumbnail for ${title}`} 
+          class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          loading="lazy"
+        />
+      )}
+      {!thumbnailUrl && (
+        <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+          <span class="text-gray-400">No image</span>
+        </div>
+      )}
     </div>
-    <div class="hidden font-serif italic opacity-0 transition group-hover:opacity-100 sm:inline-flex sm:gap-1 sm:items-center sm:shrink-0">
-        View Project <ArrowRight class="fill-current w-4 h-4" />
-    </div>
-</a>
+    <TitleTag
+      class:list={[
+        "text-xl leading-tight font-medium transition-colors duration-200 mb-1",
+        darkMode ? "text-white group-hover:text-gray-300" : "group-hover:text-gray-700 dark:group-hover:text-gray-300"
+      ]}
+    >
+      {title}
+    </TitleTag>
+    <div class:list={[
+      "text-sm font-medium uppercase tracking-wider",
+      darkMode ? "text-gray-400" : "text-gray-500"
+    ]}>{category}</div>
+    {description && <div class:list={[
+      "mt-3 text-sm leading-normal",
+      darkMode ? "text-gray-400" : "text-gray-600 dark:text-gray-400"
+    ]}>{description}</div>}
+  </a>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    setupProjectLinks();
+  });
+
+  function setupProjectLinks() {
+    const projectLinks = document.querySelectorAll('[data-project-link]');
+    
+    projectLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link instanceof HTMLAnchorElement && link.href) {
+          e.preventDefault();
+          
+          // Show the transition overlay
+          document.body.classList.remove('transition-ready');
+          
+          // Navigate after animation starts
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 300);
+        }
+      });
+    });
+  }
+</script>

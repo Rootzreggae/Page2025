@@ -1,0 +1,81 @@
+<!-- Simple bottom-to-top transition only -->
+<div id="page-transition-overlay" class="fixed inset-0 bg-black z-50 transform-gpu pointer-events-none"></div>
+
+<style>
+  /* Bottom-to-top transition, no return */
+  #page-transition-overlay {
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  /* When ready, overlay scales to 0 height from top down */
+  body.transition-ready #page-transition-overlay {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Start with overlay visible
+    document.body.classList.remove('transition-ready');
+    
+    // Then transition it away
+    setTimeout(() => {
+      document.body.classList.add('transition-ready');
+    }, 300);
+    
+    // Set up navigation transitions
+    setupNavigation();
+  });
+  
+  function setupNavigation() {
+    // Select all navigation links and carousel slide links
+    const allLinks = document.querySelectorAll('nav a, .carousel-slide');
+    
+    allLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        // Check if the element is an anchor link
+        if (link instanceof HTMLAnchorElement) {
+          // Only handle internal links to different pages
+          if (link.href && 
+              link.origin === window.location.origin && 
+              !link.href.endsWith('#') && 
+              window.location.pathname !== new URL(link.href).pathname) {
+            
+            e.preventDefault();
+            
+            // Show the overlay (bottom to top animation)
+            document.body.classList.remove('transition-ready');
+            
+            // Navigate after animation starts
+            setTimeout(() => {
+              window.location.href = link.href;
+            }, 300);
+          }
+        }
+      });
+    });
+  }
+  
+  // Safety mechanism: force transition completion if it gets stuck
+  setTimeout(() => {
+    if (!document.body.classList.contains('transition-ready')) {
+      console.log('Forcing transition completion');
+      document.body.classList.add('transition-ready');
+    }
+  }, 1000);
+  
+  // Re-initialize after Astro view transitions
+  document.addEventListener('astro:page-load', () => {
+    // Make sure we're in a ready state after navigation
+    document.body.classList.add('transition-ready');
+  });
+  
+  document.addEventListener('astro:after-swap', () => {
+    // Set up navigation transitions again after page swap
+    setupNavigation();
+  });
+</script>
+

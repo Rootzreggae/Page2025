@@ -1,0 +1,49 @@
+---
+title: "Text with Carousel Example"
+description: "This page demonstrates the TextWithCarousel component"
+---
+
+import TextWithCarousel from '../../components/TextWithCarousel.astro';
+
+# Text with Carousel Component Example
+
+<TextWithCarousel 
+  images={[
+    { src: "/sample-image-1.jpg", alt: "Sample landscape image" },
+    { src: "/sample-image-2.jpg", alt: "Sample portrait image" },
+    { src: "/sample-image-3.jpg", alt: "Another sample image" }
+  ]}
+>
+  ## Left Column Text
+  
+  This is the text content that appears in the left column. You can include any MDX content here, such as:
+  
+  - Lists
+  - **Bold text**
+  - *Italic text*
+  - [Links](https://example.com)
+  
+  The carousel on the right automatically adapts to both landscape and portrait images, ensuring they display properly regardless of orientation.
+</TextWithCarousel>
+
+## Reversed Columns Example
+
+<TextWithCarousel 
+  reversed={true}
+  images={[
+    { src: "/sample-image-4.jpg", alt: "Another landscape image" },
+    { src: "/sample-image-5.jpg", alt: "Another portrait image" },
+    { src: "/sample-image-6.jpg", alt: "Final sample image" }
+  ]}
+>
+  ## Right Column Text
+  
+  In this example, we've reversed the column order so the text appears on the right and the carousel on the left.
+  
+  This component is designed to be highly flexible and reusable throughout your MDX content. You can:
+  
+  1. Use it with any number of images
+  2. Place it anywhere in your MDX files
+  3. Customize the column order
+  4. Add any MDX content in the text column
+</TextWithCarousel>

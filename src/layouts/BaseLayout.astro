@@ -4,13 +4,23 @@ import BaseHead, { type Props as HeadProps } from '../components/BaseHead.astro'
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Nav from '../components/Nav.astro';
+import TransitionOverlay from '../components/TransitionOverlay.astro';
 import Analytics from '@vercel/analytics/astro';
 // Import the custom analytics component instead
 //import CustomAnalytics from '../components/CustomAnalytics.jsx';
 
-export type Props = HeadProps & { showHeader?: boolean };
+export type Props = HeadProps & { 
+    showHeader?: boolean; 
+    showFooter?: boolean;
+    hasHero?: boolean;
+};
 
-const { showHeader = true, ...head } = Astro.props;
+const { 
+    showHeader = true, 
+    showFooter = true, 
+    hasHero = false,
+    ...head 
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -18,23 +28,33 @@ const { showHeader = true, ...head } = Astro.props;
     <head>
         <BaseHead {...head} />
         <script>
-            if (localStorage.theme === 'dark') {
-                document.documentElement.classList.add('dark');
-            }
+            // Set light theme as default
+            localStorage.setItem('theme', 'light');
+            document.documentElement.classList.remove('dark');
         </script>
         <ClientRouter />
     </head>
     <body class="bg-main text-main">
-        <div class="flex flex-col min-h-screen px-4 md:px-8">
-            <Nav />
-            {showHeader && <Header />}
-            <main class="grow w-full max-w-3xl mx-auto">
+        <TransitionOverlay />
+        <div class:list={["flex flex-col min-h-screen", hasHero ? "has-hero" : "px-4 md:px-8"]}>
+            <Nav isOverHero={hasHero} />
+            {showHeader && !hasHero && <Header />}
+            <main class:list={["grow w-full", hasHero ? "" : "max-w-3xl mx-auto"]}>
                 <slot />
             </main>
-            <Footer />
+            {showFooter && <Footer />}
         </div>
         <!-- Replace the standard Analytics component with our custom one -->
         <!--<CustomAnalytics client:load /> -->
         <Analytics />
+        
+        <!-- Image enhancement script -->
+        <script src="/src/scripts/image-enhancement.js"></script>
     </body>
 </html>
+
+<style>
+    .has-hero {
+        padding: 0;
+    }
+</style>

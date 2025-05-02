@@ -1,0 +1,497 @@
+---
+import { getCollection } from 'astro:content';
+import { extractFirstImageUrl } from '../utils/data-utils';
+
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+
+// Get all projects
+const allProjects = await getCollection('projects');
+
+// Process projects to extract the first image for each
+const projectsWithImages = allProjects.map(project => {
+    // For 'open-source-designer' project, use the specified image URL
+    if (project.id === 'open-source-designer') {
+        return {
+            ...project,
+            firstImageUrl: 'https://i.postimg.cc/VsF7VSZF/SCR-20250413-mwar.png'
+        };
+    }
+    
+    // For 'open-source-designer-1' project, explicitly use the first image URL
+    if (project.id === 'open-source-designer-1') {
+        return {
+            ...project,
+            firstImageUrl: 'https://i.postimg.cc/XvBxjQYH/pexels-realtoughcandy-11035358.jpg'
+        };
+    }
+    
+    const firstImageUrl = project.body ? extractFirstImageUrl(project.body) : undefined;
+    return {
+        ...project,
+        firstImageUrl
+    };
+});
+
+// Define the specific order for projects
+const projectOrder = [
+    'keystrok',                   // Keystrok - API key management tool
+    'open-source-designer',       // Contributing to open source as a product designer part 2
+    'open-source-designer-1',     // Contributing to open source as a product designer part 1
+    'grafana-rum',                // Grafana Cloud frontend application
+    'grafana-apm',                // Grafana Cloud Application Observability
+    'grafana-onboarding'          // Grafana Cloud Onboarding
+];
+
+// Sort projects according to the specified order
+const orderedProjects = projectOrder
+    .map(id => projectsWithImages.find(project => project.id === id))
+    .filter(project => project !== undefined);
+
+// Add any remaining projects at the end, sorted by publishDate (newest first)
+const remainingProjects = projectsWithImages
+    .filter(project => !projectOrder.includes(project.id) && project.id !== 'jungle-ai')
+    .sort((a, b) => {
+        const dateA = new Date(a.data.publishDate);
+        const dateB = new Date(b.data.publishDate);
+        return dateB.getTime() - dateA.getTime();
+    });
+
+// Combine the sorted projects with any remaining projects
+const finalProjects = [...orderedProjects, ...remainingProjects];
+---
+
+<div class:list={["carousel-container", className]}>
+    <div class="carousel">
+        <div class="carousel-viewport">
+            <div class="carousel-track">
+                {finalProjects.map((project) => (
+                    <a href={`/projects/${project.id}`} class="carousel-slide">
+                        {project.firstImageUrl ? (
+                            <img 
+                                src={project.firstImageUrl} 
+                                alt={`Preview of ${project.data.title}`}
+                                loading="lazy"
+                            />
+                        ) : project.data.seo?.image?.src ? (
+                            <img 
+                                src={project.data.seo.image.src} 
+                                alt={`Preview of ${project.data.title}`}
+                                loading="lazy"
+                            />
+                        ) : null}
+                        <div class="slide-overlay">
+                            <h3 class="slide-title">{project.data.title}</h3>
+                            <p class="slide-date">{new Date(project.data.publishDate).toLocaleDateString('en-US', { 
+                                year: 'numeric',
+                                month: 'long'
+                            })}</p>
+                        </div>
+                    </a>
+                ))}
+            </div>
+        </div>
+        
+        <div class="carousel-navigation">
+            <button class="nav-button prev" aria-label="Previous projects">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+            </button>
+            <button class="nav-button next" aria-label="Next projects">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+.carousel-container {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+    margin-top: 2rem;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    min-height: 100svh;
+    padding: 0; /* Remove padding */
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 0; /* Remove gap between slides */
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Smoother transition with cubic-bezier */
+    width: 100%;
+}
+
+.carousel-slide {
+    flex: 0 0 calc(100% / 3); /* Exactly 3 slides with no gaps */
+    position: relative;
+    aspect-ratio: 3/4;
+    min-height: 100svh;
+    overflow: hidden;
+    background: rgb(var(--color-bg-muted));
+    text-decoration: none;
+    color: inherit;
+    transition: filter 0.3s ease;
+}
+
+/* Create the darkening effect for non-hovered slides */
+.carousel:hover .carousel-slide {
+    filter: brightness(0.7);
+}
+
+.carousel-slide:hover {
+    filter: brightness(1) !important; /* Override the darkening effect for the hovered slide */
+    z-index: 1; /* Ensure hovered slide appears above others */
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure image covers the entire container */
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: contrast(1.05) saturate(1.05); /* Subtle quality enhancement */
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), transparent);
+    color: white;
+    opacity: 1; /* Always visible */
+    transform: translateY(0); /* No transform needed */
+    text-align: center;
+}
+
+.slide-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 0.5rem;
+    font-family: 'Figtree', sans-serif;
+}
+
+.slide-date {
+    font-size: 0.875rem;
+    opacity: 0.9;
+    margin: 0;
+    font-style: italic;
+}
+
+.carousel-slide:hover img {
+    transform: scale(1.05);
+    filter: contrast(1.1) saturate(1.1) brightness(1.05); /* Enhanced on hover */
+}
+
+.carousel-navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    padding: 0;
+    pointer-events: auto;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 
+                0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.nav-button:hover {
+    background: #f8f8f8;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 
+                0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.nav-button:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.nav-button svg {
+    fill: #000000;
+    width: 24px;
+    height: 24px;
+}
+
+.nav-button.prev {
+    left: 2rem;
+}
+
+.nav-button.next {
+    right: 2rem;
+}
+
+.nav-button:disabled {
+    background: #e5e5e5;
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.nav-button:disabled:hover {
+    transform: translateY(-50%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .carousel {
+        padding: 0;
+    }
+
+    .carousel-track {
+        gap: 0;
+    }
+
+    .carousel-slide {
+        flex: 0 0 calc(100% / 3); /* Still 3 slides with no gap */
+    }
+    
+    .nav-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-button.prev {
+        left: 1rem;
+    }
+
+    .nav-button.next {
+        right: 1rem;
+    }
+
+    .slide-title {
+        font-size: 1.25rem;
+        font-family: 'Figtree', sans-serif;
+    }
+
+    .slide-date {
+        font-size: 0.75rem;
+        font-style: italic;
+    }
+    
+    .slide-overlay {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel {
+        padding: 0;
+    }
+
+    .carousel-track {
+        gap: 0;
+    }
+
+    .carousel-slide {
+        flex: 0 0 calc(100% / 3); /* Still 3 slides with no gap */
+    }
+
+    .nav-button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .nav-button.prev {
+        left: 0.5rem;
+    }
+
+    .nav-button.next {
+        right: 0.5rem;
+    }
+
+    .slide-title {
+        font-size: 1rem;
+        font-family: 'Figtree', sans-serif;
+    }
+
+    .slide-date {
+        font-size: 0.75rem;
+        font-style: italic;
+    }
+
+    .slide-overlay {
+        padding: 1rem;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    class Carousel {
+        carousel: HTMLElement;
+        track: HTMLElement;
+        slides: HTMLElement[];
+        prevButton: HTMLButtonElement;
+        nextButton: HTMLButtonElement;
+        currentIndex: number = 0;
+
+        constructor(element: HTMLElement) {
+            this.carousel = element;
+            this.track = element.querySelector('.carousel-track')!;
+            this.slides = Array.from(this.track.querySelectorAll('.carousel-slide'));
+            this.prevButton = element.querySelector('.nav-button.prev')!;
+            this.nextButton = element.querySelector('.nav-button.next')!;
+            
+            // Initialize the carousel
+            this.init();
+        }
+        
+        init(): void {
+            // Don't do anything if there are no slides
+            if (this.slides.length === 0) return;
+
+            // Initial positioning and button state
+            this.updatePosition();
+            this.updateButtons();
+            
+            // Event listeners for navigation buttons
+            this.prevButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.prev();
+            });
+            
+            this.nextButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.next();
+            });
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') this.prev();
+                if (e.key === 'ArrowRight') this.next();
+            });
+            
+            // Add touch support
+            this.addTouchSupport();
+
+            // Handle resize
+            window.addEventListener('resize', () => {
+                this.updatePosition();
+            });
+        }
+
+        updatePosition(): void {
+            if (this.slides.length === 0) return;
+            
+            const slideWidth = this.slides[0].offsetWidth;
+            // No gap between slides
+            const offset = -(this.currentIndex * slideWidth);
+            this.track.style.transform = `translateX(${offset}px)`;
+        }
+        
+        updateButtons(): void {
+            // In a cycling carousel, we don't need to disable buttons
+            // They're always enabled and visible
+            this.prevButton.disabled = false;
+            this.prevButton.style.visibility = 'visible';
+            this.nextButton.disabled = false;
+            this.nextButton.style.visibility = 'visible';
+        }
+        
+        prev(): void {
+            // Move 3 slides at once
+            // If at the beginning, cycle to the end
+            if (this.currentIndex === 0) {
+                // Calculate the appropriate index to show the last set of 3 slides
+                const completeSetCount = Math.floor(this.slides.length / 3);
+                this.currentIndex = Math.max(0, completeSetCount - 1) * 3;
+            } else {
+                this.currentIndex = Math.max(0, this.currentIndex - 3);
+            }
+            
+            this.updatePosition();
+            this.updateButtons();
+        }
+        
+        next(): void {
+            // Move 3 slides at once
+            // If at the end, cycle to the beginning
+            if (this.currentIndex + 3 >= this.slides.length) {
+                this.currentIndex = 0; // Return to the beginning
+            } else {
+                this.currentIndex += 3;
+                // If we're now showing fewer than 3 slides, go back to the beginning
+                if (this.currentIndex + 3 > this.slides.length) {
+                    this.currentIndex = 0;
+                }
+            }
+            
+            this.updatePosition();
+            this.updateButtons();
+        }
+        
+        addTouchSupport(): void {
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            this.carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            this.carousel.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                this.handleTouchMove(touchStartX, touchEndX);
+            }, { passive: true });
+        }
+        
+        handleTouchMove(startX: number, endX: number): void {
+            const difference = startX - endX;
+            const threshold = 50;
+            
+            if (Math.abs(difference) > threshold) {
+                if (difference > 0) {
+                    this.next(); // Will now move 3 slides
+                } else {
+                    this.prev(); // Will now move 3 slides
+                }
+            }
+        }
+    }
+
+    // Initialize all carousels on the page
+    document.querySelectorAll('.carousel').forEach(carousel => {
+        new Carousel(carousel as HTMLElement);
+    });
+});
+</script>

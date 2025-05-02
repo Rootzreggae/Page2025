@@ -6,7 +6,8 @@ module.exports = {
     theme: {
         fontFamily: {
             sans: ['Inter Variable', ...defaultTheme.fontFamily.sans],
-            serif: ['Newsreader Variable', ...defaultTheme.fontFamily.serif]
+            serif: ['Newsreader Variable', ...defaultTheme.fontFamily.serif],
+            figtree: ['Figtree', ...defaultTheme.fontFamily.sans]
         },
         extend: {
             textColor: {
@@ -37,7 +38,8 @@ module.exports = {
                         '--tw-prose-pre-code': theme('colors.zinc.100'),
                         '--tw-prose-pre-bg': theme('colors.zinc.800'),
                         '--tw-prose-th-borders': theme('borderColor.main / 100%'),
-                        '--tw-prose-td-borders': theme('borderColor.main / 100%')
+                        '--tw-prose-td-borders': theme('borderColor.main / 100%'),
+                        maxWidth: 'none' // Remove max-width constraint
                     }
                 },
                 DEFAULT: {
@@ -55,6 +57,21 @@ module.exports = {
                         'h1,h2,h3,h4,h5,h6': {
                             fontFamily: theme('fontFamily.serif'),
                             fontWeight: 500
+                        },
+                        strong: {
+                            fontSize: '1.5rem', /* Base size for mobile */
+                            fontWeight: 'bold',
+                            lineHeight: '1.3',
+                            display: 'inline-block',
+                            margin: '0.25em 0',
+                            verticalAlign: 'middle',
+                            '@media (min-width: theme("screens.sm"))': {
+                                fontSize: '2rem' /* Medium size for tablets */
+                            },
+                            '@media (min-width: theme("screens.lg"))': {
+                                fontSize: '2.5rem', /* Full size for desktop */
+                                lineHeight: '1.2'
+                            }
                         },
                         blockquote: {
                             border: 0,

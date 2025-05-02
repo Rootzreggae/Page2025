@@ -1,0 +1,72 @@
+---
+// This component handles the custom page transition animation
+---
+
+<div id="page-transition" class="fixed inset-0 z-50 pointer-events-none">
+  <div id="transition-overlay" class="w-full h-0 bg-black origin-bottom transform-gpu transition-all duration-700 ease-in-out"></div>
+</div>
+
+<style>
+  #transition-overlay {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  
+  :global(.page-transition-active) #transition-overlay {
+    height: 100vh;
+    transform: scaleY(1);
+  }
+  
+  :global(.page-transition-ending) #transition-overlay {
+    height: 100vh;
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+</style>
+
+<script>
+  // Script to handle the page transition animation
+  document.addEventListener('astro:page-load', () => {
+    // Reset the transition state
+    document.documentElement.classList.remove('page-transition-active', 'page-transition-ending');
+    
+    // Ensure body transition-ready class is set properly to finish any manual transitions
+    setTimeout(() => {
+      if (!document.body.classList.contains('transition-ready')) {
+        document.body.classList.add('transition-ready');
+      }
+    }, 100);
+  });
+  
+  document.addEventListener('astro:before-preparation', () => {
+    // Start transition when navigation begins - from bottom to top
+    document.documentElement.classList.add('page-transition-active');
+    document.documentElement.classList.remove('page-transition-ending');
+    
+    // Also handle the manual transition overlay if it exists
+    document.body.classList.remove('transition-ready');
+  });
+  
+  document.addEventListener('astro:after-preparation', () => {
+    // After content is prepared but before swap, start ending animation
+    // This transition fades out from top, not returning to bottom
+    setTimeout(() => {
+      document.documentElement.classList.remove('page-transition-active');
+      document.documentElement.classList.add('page-transition-ending');
+      
+      // Add a safety measure to also complete manual transitions
+      setTimeout(() => {
+        document.body.classList.add('transition-ready');
+      }, 50);
+    }, 300); // Small delay to ensure the overlay is fully expanded before squashing
+  });
+  
+  // Handle back/forward navigation
+  window.addEventListener('popstate', () => {
+    // Ensure transition displays properly on browser back/forward
+    document.body.classList.remove('transition-ready');
+    setTimeout(() => {
+      document.body.classList.add('transition-ready');
+    }, 300);
+  });
+</script>

@@ -1,6 +1,7 @@
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/newsreader';
 @import '@fontsource-variable/newsreader/wght-italic.css';
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -19,6 +20,53 @@
         --color-bg-muted: 28 34 53; /* #1c2235 - slightly lighter than main for contrast */
         --color-border-main: 242 241 236; /* #F2F1EC */
     }
+}
+
+/* Custom styling for strong elements in markdown content */
+.prose strong {
+    font-size: 1.5rem; /* Base size for mobile */
+    font-weight: bold;
+    line-height: 1.3;
+    display: inline-block;
+    margin: 0.25em 0;
+    vertical-align: middle;
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+    .prose strong {
+        font-size: 2rem; /* Medium size for tablets */
+    }
+}
+
+@media (min-width: 1024px) {
+    .prose strong {
+        font-size: 2.5rem; /* Full size for desktop */
+        line-height: 1.2;
+    }
+}
+
+/* Image quality enhancements for projects */
+.prose img {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    filter: contrast(1.03) saturate(1.03);
+}
+
+.prose img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    filter: contrast(1.05) saturate(1.05);
+}
+
+/* Fullwidth project images */
+.prose img.fullwidth {
+    width: 100vw;
+    max-width: none;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0;
 }
 
 .break-inside-avoid {

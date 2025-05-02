@@ -1,0 +1,78 @@
+---
+/**
+ * A full-width, edge-to-edge hero section for projects that displays an image as background.
+ * Designed to appear below the nav but above the project title.
+ */
+
+interface Props {
+  /**
+   * Image URL for the hero background
+   */
+  imageUrl: string;
+  
+  /**
+   * Optional CSS class to add to the container
+   */
+  class?: string;
+  
+  /**
+   * Optional overlay opacity (0-1, default: 0.2)
+   */
+  overlayOpacity?: number;
+}
+
+const { 
+  imageUrl, 
+  class: className,
+  overlayOpacity = 0.2 
+} = Astro.props;
+
+// Calculate the CSS for the overlay based on provided opacity
+const overlayCSS = `rgba(255, 255, 255, ${overlayOpacity})`;
+---
+
+<div 
+  class:list={[
+    'project-hero-container', 
+    className
+  ]}
+>
+  <div 
+    class="project-hero"
+    style={`background-image: url(${imageUrl});`}
+  >
+    <div class="hero-overlay" style={`background-color: ${overlayCSS};`}></div>
+  </div>
+</div>
+
+<style>
+  .project-hero-container {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 2rem;
+    margin-top: 0;
+  }
+  
+  .project-hero {
+    min-height: 100svh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+</style>

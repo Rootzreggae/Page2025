@@ -2,44 +2,172 @@
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectPreview from '../../components/ProjectPreview.astro';
-import { sortItemsByDateDesc } from '../../utils/data-utils';
+import ProjectFullWidthHero from '../../components/ProjectFullWidthHero.astro';
+import FullWidthFooter from '../../components/FullWidthFooter.astro';
+import siteConfig from '../../data/site-config';
+import { sortItemsByDateDesc, extractAllImageUrls } from '../../utils/data-utils';
 
 export async function getStaticPaths() {
     const projects = (await getCollection('projects')).sort(sortItemsByDateDesc);
-    const projectCount = projects.length;
-    return projects.map((project, index) => ({
+    return projects.map((project) => ({
         params: { id: project.id },
         props: {
             project,
-            prevProject: index + 1 !== projectCount ? projects[index + 1] : null,
-            nextProject: index !== 0 ? projects[index - 1] : null
+            allProjects: projects // Pass all projects for the works grid
         }
     }));
 }
 
-type Props = { project: CollectionEntry<'projects'>; prevProject: CollectionEntry<'projects'>; nextProject: CollectionEntry<'projects'> };
+type Props = { 
+    project: CollectionEntry<'projects'>; 
+    allProjects: CollectionEntry<'projects'>[]
+};
 
-const { project, prevProject, nextProject } = Astro.props;
+const { project, allProjects } = Astro.props;
 const { title, description, seo } = project.data;
 const { Content } = await render(project);
+
+// Extract all image URLs from project content
+const projectImages = project.body ? extractAllImageUrls(project.body) : [];
+const firstImage = projectImages.length > 0 ? projectImages[0] : null;
+
+// Determine if we have what we need for a full-width hero
+const hasHeroImage = !!firstImage;
 ---
 
-<BaseLayout title={seo?.title ?? title} description={seo?.description ?? description} image={seo?.image} pageType="article" showHeader={false}>
-    <article class="mb-16 sm:mb-24">
-        <header class="mb-8">
-            <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">{title}</h1>
-        </header>
-        <div class="max-w-none prose prose-dante sm:prose-lg">
+<BaseLayout title={seo?.title ?? title} description={seo?.description ?? description} image={seo?.image} pageType="article" showHeader={false} showFooter={false}>
+    {hasHeroImage && (
+        <ProjectFullWidthHero 
+            imageUrl={firstImage} 
+            title={title} 
+            publishDate={new Date(project.data.publishDate)}
+        />
+    )}
+    
+    <article class:list={["prose-container", !hasHeroImage && "mt-12"]}>
+        {!hasHeroImage && (
+            <header class="mb-8">
+                <h1 class="text-3xl leading-tight font-serif font-medium sm:text-5xl sm:leading-tight">{title}</h1>
+            </header>
+        )}
+        
+        <div class="max-w-none prose prose-dante sm:prose-lg w-full">
             <Content />
         </div>
     </article>
-    {
-        (prevProject || nextProject) && (
-            <div class="my-16 sm:my-24">
-                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">View Next</h2>
-                {nextProject && <ProjectPreview project={nextProject} class="mb-10 sm:mb-12" headingLevel="h3" />}
-                {prevProject && <ProjectPreview project={prevProject} class="mb-10 sm:mb-12" headingLevel="h3" />}
-            </div>
-        )
-    }
+    
+    <!-- Back to top button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
 </BaseLayout>
+
+<!-- Works grid section outside of the BaseLayout to span full width -->
+<div class="w-full bg-[#141414] mt-16 pt-16">
+    <div class="max-w-[1248px] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <h2 class="mb-12 text-4xl leading-tight font-figtree font-bold sm:mb-16 text-white">More Works</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            {allProjects.filter(p => p.id !== project.id).slice(0, siteConfig.projectsPerPage || 6).map((project) => (
+                <ProjectPreview project={project} darkMode={true} />
+            ))}
+        </div>
+    </div>
+</div>
+
+<!-- Full width footer -->
+<FullWidthFooter />
+
+<style>
+    /* Hide the first image in the Content to avoid duplication */
+    :global(.prose img:first-of-type) {
+        display: none;
+    }
+    
+    .prose-container {
+        max-width: 1248px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 1.5rem;
+        margin-bottom: 4rem;
+    }
+    
+    /* Make the actual prose content match the title width */
+    .prose-container .prose {
+        max-width: 100%; /* Override any Tailwind max-width constraints */
+        width: 100%;
+    }
+    
+    /* Back to top button styles */
+    .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 8px;
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+    }
+    
+    .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    @media (min-width: 640px) {
+        .prose-container {
+            padding: 0 3rem;
+        }
+        
+        /* Ensure prose content fills container at larger sizes too */
+        .prose-container .prose {
+            max-width: none;
+        }
+    }
+</style>
+
+<script>
+    // Back to top button functionality
+    document.addEventListener('astro:page-load', () => {
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        if (backToTopButton) {
+            // Show button when scrolled down
+            const toggleBackToTopButton = () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            };
+            
+            // Scroll to top when clicked
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Listen for scroll events
+            window.addEventListener('scroll', toggleBackToTopButton);
+            
+            // Initial check on page load
+            toggleBackToTopButton();
+        }
+    });
+</script>

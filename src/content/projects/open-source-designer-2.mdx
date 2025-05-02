@@ -1,15 +1,18 @@
 ---
-title: Contributing to open source as a product designer pt2
+title: 'Contributing to open source as a product designer pt2'
 description: ''
-publishDate: 'April 14 2025'
+publishDate: '2025-04-14'
 isFeatured: true
 seo:
   image:
     src: 'https://i.postimg.cc/HW5wrDjc/app-o11y.png'
+    alt: 'Open source designer project'
 ---
 
+import TextWithCarousel from '../../components/TextWithCarousel.astro';
+import TwoColumnImageLayout from '../../components/TwoColumnImageLayout.astro';
 
-![alt text](https://i.postimg.cc/VsF7VSZF/SCR-20250413-mwar.png)
+![alt text](https://i.postimg.cc/Kv19DsCP/SCR-20250430-qnjh.png)
 
 **App Design for Distributed Network Monitoring System**
 
@@ -93,5 +96,16 @@ As the project is in very early stages, the style guide is still being developed
 - Typography: Select a font that is easy to read and matches the overall style of the dashboard.
 - Icons: Use icons to represent different actions and features in the dashboard.
 - Layout: Organize the dashboard in a way that makes it easy to navigate and understand.
+
+<TwoColumnImageLayout
+  leftTopImage={{ src: "https://i.postimg.cc/HL4PH9Wz/image-4.png", alt: "Dashboard wireframe concept" }}
+  leftBottomImage={{ src: "https://i.postimg.cc/636wN3K7/image-2.png", alt: "Navigation structure design" }}
+  rightTopImage={{ src: "https://i.postimg.cc/02VVtyWW/SCR-20250414-jnpv.png", alt: "High-fidelity mockup" }}
+  carouselImages={[
+    { src: "https://i.postimg.cc/8znnCzLJ/image-24.png", alt: "User settings panel" },
+    { src: "https://i.postimg.cc/Vv3JKMtQ/PXL-20250408-102620836.png", alt: "Initial sketches" },
+    { src: "https://i.postimg.cc/qv772jSh/PXL-20250414-090623397.png", alt: "Paper wireframes" }
+  ]}
+/>
 
 Find the prototype app built in React here. [Link](https://storied-semolina-e5286f.netlify.app/)

@@ -1,0 +1,306 @@
+---
+/**
+ * A full-width hero image component that spans edge-to-edge and has a minimum height of 100svh.
+ * Designed to display the first image of a project at full width with title below.
+ */
+import OptimizedHeroImage from './OptimizedHeroImage.astro';
+
+interface Props {
+  /**
+   * The image URL to display as hero
+   */
+  imageUrl: string;
+  
+  /**
+   * The title to display below the image
+   */
+  title: string;
+  
+  /**
+   * The publish date of the project
+   */
+  publishDate: Date;
+  
+  /**
+   * Optional CSS class to add
+   */
+  class?: string;
+}
+
+const { 
+  imageUrl, 
+  title,
+  publishDate,
+  class: className
+} = Astro.props;
+
+// Format the date
+const formattedDate = publishDate.toLocaleDateString('en-US', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric'
+});
+
+// Calendar SVG icon
+const calendarIcon = `<svg width="16px" height="16px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M15 4V2M15 4V6M15 4H10.5M3 10V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V10H3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 10V6C3 4.89543 3.89543 4 5 4H7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 10V6C21 4.89543 20.1046 4 19 4H18.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
+---
+
+<div class:list={[
+  'project-hero-full-width',
+  className
+]}>
+  <div class="hero-image-container">
+    <!-- Using the new OptimizedHeroImage component -->
+    <OptimizedHeroImage 
+      src={imageUrl} 
+      alt={`Hero image for ${title}`}
+    />
+    
+    <!-- Scroll to content button -->
+    <button class="scroll-to-content" aria-label="Scroll to content">
+      <svg width="16px" height="16px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
+        <path d="M6 9L12 15L18 9" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="title-container" id="project-title">
+    <div class="date-container">
+      <span class="calendar-icon" set:html={calendarIcon} />
+      <span class="date">{formattedDate}</span>
+    </div>
+    <h1>{title}</h1>
+  </div>
+</div>
+
+<style>
+  .project-hero-full-width {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 3rem;
+  }
+  
+  .hero-image-container {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Helps distribute space with the button */
+  }
+  
+  /* Scroll to content button styling */
+  .scroll-to-content {
+    position: absolute;
+    bottom: 5vh; /* Use viewport height for relative positioning */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 0 3px rgba(255, 255, 255, 0.6); /* Add white border for contrast */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 20; /* Higher z-index to ensure visibility */
+    animation: pulse 2s infinite;
+  }
+  
+  /* Make the SVG icon slightly larger and darker for better visibility */
+  .scroll-to-content svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2; /* Make the stroke thicker */
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(255, 255, 255, 0.6);
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      box-shadow: 0 0 0 10px rgba(0, 0, 0, 0), 0 0 0 3px rgba(255, 255, 255, 0.6);
+      transform: translateX(-50%) translateY(-6px);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 3px rgba(255, 255, 255, 0.6);
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+  
+  .scroll-to-content:hover {
+    animation-play-state: paused;
+    transform: translateX(-50%) translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2), 0 0 0 4px rgba(255, 255, 255, 0.7);
+  }
+  
+  .scroll-to-content:active {
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  /* Responsive adjustments for the scroll button */
+  @media (max-height: 600px) {
+    .scroll-to-content {
+      bottom: 10vh; /* Move higher up on shorter screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .scroll-to-content {
+      width: 54px; /* Slightly larger on tablets for better tap target */
+      height: 54px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .scroll-to-content {
+      bottom: 15vh; /* Even higher on mobile */
+      width: 56px; /* Even larger on mobile for better tap target */
+      height: 56px;
+    }
+  }
+  
+  .title-container {
+    width: 100%;
+    max-width: 1248px;
+    padding: 0 1.5rem;
+    margin: 2rem auto 0;
+  }
+  
+  .date-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: #000; /* Black color */
+    font-size: 0.8rem; /* Smaller size as requested */
+    font-weight: 600; /* Semi-bold */
+  }
+  
+  .calendar-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+  .date {
+    display: inline-block;
+  }
+  
+  .title-container h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    font-family: var(--font-serif);
+    margin-bottom: 1.5rem;
+    color: #111827;
+  }
+  
+  @media (min-width: 640px) {
+    .title-container {
+      padding: 0 3rem;
+      margin-top: 3rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .title-container h1 {
+      font-size: 3.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .title-container h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const scrollButtons = document.querySelectorAll('.scroll-to-content');
+    
+    // Function to check if an element is in viewport
+    const isInViewport = (element) => {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    };
+    
+    // Ensure button is visible on initial load
+    scrollButtons.forEach(button => {
+      // If button is not visible in viewport, adjust its position
+      if (!isInViewport(button)) {
+        button.style.bottom = 'calc(100vh - 120px)';
+      }
+      
+      button.addEventListener('click', () => {
+        // Scroll to the title container first to ensure the date and title are visible
+        const titleContainer = document.getElementById('project-title');
+        
+        if (titleContainer) {
+          // Get the top of the title container
+          const titlePosition = titleContainer.getBoundingClientRect().top;
+          const offsetPosition = titlePosition + window.pageYOffset - 20; // Smaller offset to ensure title is visible
+          
+          // Smooth scroll to the title container
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        } else {
+          // Fallback to content if title container not found
+          let contentElement = document.querySelector('.prose-container .prose');
+          
+          // If not found, try other options
+          if (!contentElement) {
+            contentElement = document.querySelector('.prose-container');
+          }
+          
+          // If still not found, just try to find any content after the hero
+          if (!contentElement) {
+            const heroElement = document.querySelector('.project-hero-full-width');
+            if (heroElement && heroElement.nextElementSibling) {
+              contentElement = heroElement.nextElementSibling;
+            }
+          }
+          
+          if (contentElement) {
+            // Calculate offset to account for any sticky headers or navigation
+            const offset = 80; // Larger offset to account for sticky navigation
+            const elementPosition = contentElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            
+            // Smooth scroll to the content
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+    
+    // Adjust button visibility on resize
+    window.addEventListener('resize', () => {
+      scrollButtons.forEach(button => {
+        // Reset custom style first
+        button.style.bottom = '';
+        
+        // If button is not visible in viewport after reset, adjust its position
+        if (!isInViewport(button)) {
+          button.style.bottom = 'calc(100vh - 120px)';
+        }
+      });
+    });
+  });
+</script>

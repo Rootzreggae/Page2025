@@ -1,0 +1,540 @@
+---
+/**
+ * TwoColumnImageLayout Component
+ * A two-column layout with:
+ * - Left column: Two stacked images
+ * - Right column: One image on top and a carousel below
+ * 
+ * This component breaks out of the base layout with a width of 1440px and height of 500px
+ */
+
+export interface CarouselImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  leftTopImage: {
+    src: string;
+    alt: string;
+  };
+  leftBottomImage: {
+    src: string;
+    alt: string;
+  };
+  rightTopImage: {
+    src: string;
+    alt: string;
+  };
+  carouselImages: CarouselImage[];
+  class?: string;
+}
+
+const { 
+  leftTopImage,
+  leftBottomImage,
+  rightTopImage,
+  carouselImages = [],
+  class: className = ""
+} = Astro.props;
+---
+
+<div class="breakout-container">
+  <div class:list={["two-column-image-layout", className]}>
+    <!-- Left Column - Two stacked images -->
+    <div class="left-column">
+      <div class="top-image-container">
+        <img src={leftTopImage.src} alt={leftTopImage.alt || "Top image"} loading="lazy" />
+      </div>
+      <div class="bottom-image-container">
+        <img src={leftBottomImage.src} alt={leftBottomImage.alt || "Bottom image"} loading="lazy" />
+      </div>
+    </div>
+    
+    <!-- Right Column - One image on top and carousel below -->
+    <div class="right-column">
+      <!-- Top Image -->
+      <div class="top-image-container">
+        <img src={rightTopImage.src} alt={rightTopImage.alt || "Top right image"} loading="lazy" />
+      </div>
+      
+      <!-- Carousel Below -->
+      <div class="carousel-container">
+        <div class="adaptive-carousel">
+          <div class="carousel-slides">
+            {carouselImages.map((image, index) => (
+              <div class="carousel-slide" data-index={index} data-description={image.alt} style={index === 0 ? "display: block" : "display: none"}>
+                <img src={image.src} alt={image.alt || "Carousel image"} loading="lazy" />
+              </div>
+            ))}
+          </div>
+        
+          {carouselImages.length > 1 && (
+            <div class="carousel-controls">
+              <button class="prev-button" aria-label="Previous image">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                </svg>
+              </button>
+              
+              <div class="carousel-info">
+                <div class="carousel-description"></div>
+                <div class="carousel-indicator">
+                  <span class="current-slide">1</span>/<span class="total-slides">{carouselImages.length}</span>
+                </div>
+              </div>
+              
+              <button class="next-button" aria-label="Next image">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+                </svg>
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Breakout container that completely escapes base layout */
+.breakout-container {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  position: relative;
+  left: 0;
+  right: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+.two-column-image-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 500px;
+  height: auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+/* Left Column Styles */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: auto;
+}
+
+.left-column .top-image-container,
+.left-column .bottom-image-container {
+  width: 100%;
+  min-height: 200px;
+  height: calc(50% - 1rem); /* Half height minus gap */
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+}
+
+.left-column img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Right Column Styles */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: auto;
+}
+
+.right-column .top-image-container {
+  width: 100%;
+  min-height: 200px;
+  height: calc(50% - 1rem); /* Half height minus gap */
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+}
+
+.right-column .top-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Carousel Styles */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  height: calc(50% - 1rem); /* Half height minus gap */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.adaptive-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slides {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 60px); /* Height minus controls with increased height */
+  overflow: hidden;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Carousel Controls */
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  height: 60px; /* Increased height for better touch target */
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.prev-button,
+.next-button {
+  background: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  opacity: 0.9;
+  transition: opacity 0.3s, transform 0.3s;
+  margin: 0 0.5rem;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.prev-button:focus,
+.next-button:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.prev-button svg,
+.next-button svg {
+  fill: #333;
+  width: 20px;
+  height: 20px;
+}
+
+.carousel-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 70%;
+  padding: 0 1rem;
+}
+
+.carousel-description {
+  font-size: 0.9rem;
+  color: #444;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: 1.2;
+}
+
+.carousel-indicator {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* Responsive styles */
+@media (max-width: 1480px) {
+  .two-column-image-layout {
+    width: 95vw;
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .two-column-image-layout {
+    gap: 1.5rem;
+  }
+  
+  .left-column .top-image-container,
+  .left-column .bottom-image-container,
+  .right-column .top-image-container {
+    height: 220px;
+  }
+
+  .carousel-container {
+    height: 280px; /* Give more space to carousel */
+  }
+}
+
+@media (max-width: 768px) {
+  .two-column-image-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    height: auto;
+  }
+  
+  .left-column,
+  .right-column {
+    gap: 1.5rem;
+    height: auto;
+  }
+  
+  .left-column .top-image-container,
+  .left-column .bottom-image-container,
+  .right-column .top-image-container,
+  .carousel-container {
+    height: 280px;
+  }
+  
+  .carousel-container {
+    margin-bottom: 1rem; /* Add some margin at bottom */
+  }
+
+  .carousel-controls {
+    height: 50px; /* Slightly smaller on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .breakout-container {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .two-column-image-layout {
+    gap: 1rem;
+  }
+
+  .left-column,
+  .right-column {
+    gap: 1rem;
+  }
+
+  .left-column .top-image-container,
+  .left-column .bottom-image-container,
+  .right-column .top-image-container,
+  .carousel-container {
+    height: 220px;
+  }
+  
+  .carousel-controls {
+    padding: 0.5rem;
+    height: 50px;
+  }
+  
+  .prev-button,
+  .next-button {
+    width: 32px;
+    height: 32px;
+    margin: 0 0.25rem;
+  }
+  
+  .carousel-info {
+    width: 60%;
+    padding: 0 0.5rem;
+  }
+
+  .carousel-description {
+    font-size: 0.8rem;
+    max-width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+}
+</style>
+
+<script>
+// Carousel functionality
+function setupImageCarousels() {
+  const carousels = document.querySelectorAll('.adaptive-carousel');
+  
+  carousels.forEach(carousel => {
+    const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+    const prevButton = carousel.querySelector('.prev-button');
+    const nextButton = carousel.querySelector('.next-button');
+    
+    if (slides.length === 0) return;
+    
+    let currentIndex = 0;
+    
+    // Show the first slide initially
+    slides[0].style.display = 'block';
+    
+    function showSlide(index) {
+      // Hide all slides
+      slides.forEach(slide => slide.style.display = 'none');
+      
+      // Show the current slide
+      slides[index].style.display = 'block';
+      
+      // Update indicator
+      const currentSlideEl = carousel.querySelector('.current-slide');
+      if (currentSlideEl) {
+        currentSlideEl.textContent = index + 1;
+      }
+      
+      // Update description
+      const descriptionEl = carousel.querySelector('.carousel-description');
+      const currentSlide = slides[index];
+      if (descriptionEl && currentSlide) {
+        const description = currentSlide.getAttribute('data-description');
+        descriptionEl.textContent = description || '';
+      }
+    }
+    
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+    
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+    
+    // Add event listeners
+    if (prevButton) {
+      prevButton.addEventListener('click', prevSlide);
+    }
+    
+    if (nextButton) {
+      nextButton.addEventListener('click', nextSlide);
+    }
+    
+    // Add keyboard navigation
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+    });
+    
+    // Add touch support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    carousel.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    carousel.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      
+      const difference = touchStartX - touchEndX;
+      const threshold = 50;
+      
+      if (Math.abs(difference) > threshold) {
+        if (difference > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    }, { passive: true });
+    
+    // Initialize description
+    if (slides.length > 0) {
+      const descriptionEl = carousel.querySelector('.carousel-description');
+      if (descriptionEl) {
+        const description = slides[0].getAttribute('data-description');
+        descriptionEl.textContent = description || '';
+      }
+    }
+    
+    // Optional auto-advance
+    // Uncomment this to enable auto-advance
+    /*
+    let autoAdvanceInterval;
+    
+    function startAutoAdvance() {
+      autoAdvanceInterval = setInterval(() => {
+        nextSlide();
+      }, 5000); // Change slide every 5 seconds
+    }
+    
+    function stopAutoAdvance() {
+      clearInterval(autoAdvanceInterval);
+    }
+    
+    // Start auto-advance
+    startAutoAdvance();
+    
+    // Stop on user interaction
+    carousel.addEventListener('mouseenter', stopAutoAdvance);
+    carousel.addEventListener('mouseleave', startAutoAdvance);
+    prevButton.addEventListener('click', () => {
+      stopAutoAdvance();
+      setTimeout(startAutoAdvance, 10000); // Resume after 10 seconds
+    });
+    nextButton.addEventListener('click', () => {
+      stopAutoAdvance();
+      setTimeout(startAutoAdvance, 10000); // Resume after 10 seconds
+    });
+    */
+  });
+}
+
+// Initialize carousels in different scenarios to ensure they work
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupImageCarousels);
+} else {
+  setupImageCarousels();
+}
+
+// Also run after a delay to handle hydration scenarios
+setTimeout(setupImageCarousels, 200);
+</script>

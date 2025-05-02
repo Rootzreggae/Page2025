@@ -1,0 +1,80 @@
+---
+/**
+ * An optimized image component for inline project content images.
+ * Provides better image quality and loading performance.
+ */
+
+interface Props {
+  /**
+   * The source URL of the image
+   */
+  src: string;
+  
+  /**
+   * Alt text for accessibility
+   */
+  alt: string;
+  
+  /**
+   * Optional CSS class to add
+   */
+  class?: string;
+}
+
+const { src, alt, class: className } = Astro.props;
+---
+
+<figure class:list={['optimized-content-image-container', className]}>
+  <img 
+    src={src} 
+    alt={alt} 
+    class="optimized-content-image" 
+    loading="lazy" 
+    decoding="async"
+  />
+  <figcaption>
+    <slot />
+  </figcaption>
+</figure>
+
+<style>
+  .optimized-content-image-container {
+    margin: 2rem 0;
+    position: relative;
+    width: 100%;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .optimized-content-image-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+  
+  .optimized-content-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: contrast(1.03) saturate(1.03);
+    transition: filter 0.3s ease;
+  }
+  
+  .optimized-content-image-container:hover .optimized-content-image {
+    filter: contrast(1.05) saturate(1.05);
+  }
+  
+  figcaption {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #666;
+    background-color: #f9f9f9;
+  }
+  
+  /* Hide figcaption if empty */
+  figcaption:empty {
+    display: none;
+  }
+</style>

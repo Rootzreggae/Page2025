@@ -1,0 +1,119 @@
+---
+/**
+ * A utility component that creates an image with caption for case studies
+ */
+
+interface Props {
+  /**
+   * Image source URL
+   */
+  src: string;
+  
+  /**
+   * Alternative text for the image
+   */
+  alt: string;
+  
+  /**
+   * Optional CSS class to add
+   */
+  class?: string;
+  
+  /**
+   * Optional caption to display below the image
+   */
+  caption?: string;
+}
+
+const { 
+  src, 
+  alt,
+  caption,
+  class: className
+} = Astro.props;
+---
+
+<div class:list={['casestudy-container', className]}>
+  <img 
+    src={src} 
+    alt={alt} 
+    class="casestudy-image"
+    width="1216"
+    height="684"
+  />
+  {caption && <p class="casestudy-caption">{caption}</p>}
+</div>
+
+<style>
+  /* Container for the entire component */
+  .casestudy-container {
+    width: 100%;
+    max-width: 1216px;
+    margin: 3rem auto;
+    display: block;
+    /* Ensure our component is visible */
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* The image itself */
+  .casestudy-image {
+    width: 100%;
+    height: auto;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border-radius: 8px;
+    /* Remove any shadow or effects */
+    box-shadow: none !important;
+    filter: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+
+  /* Prevent hover effects */
+  .casestudy-image:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+  
+  /* Caption styling */
+  .casestudy-caption {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.75rem;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 1280px) {
+    .casestudy-container {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+  }
+  
+  /* Override global prose styles */
+  :global(.prose) .casestudy-container {
+    margin: 3rem auto !important;
+  }
+  
+  :global(.prose) .casestudy-image {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin: 0 auto !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    filter: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  :global(.prose) .casestudy-image:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+</style>

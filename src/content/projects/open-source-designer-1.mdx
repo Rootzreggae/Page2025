@@ -8,6 +8,7 @@ seo:
     src: 'https://i.postimg.cc/HW5wrDjc/app-o11y.png'
 ---
 
+import TwoColumnImageLayout from '../../components/TwoColumnImageLayout.astro';
 
 [![pexels-realtoughcandy-11035358.jpg](https://i.postimg.cc/XvBxjQYH/pexels-realtoughcandy-11035358.jpg)](https://postimg.cc/CZYbJCDk)
 
@@ -16,7 +17,16 @@ My passion lies at the intersection of product design and the collaborative spir
 Driven by this goal, I began searching platforms like GitHub, Lemmy, and Reddit for a project that resonated with my interests and where design could potentially add significant value. My search led me to Service Radar, introduced via a Reddit post. As defined by its creator, Michael
 >ServiceRadar is a distributed network monitoring system designed to keep an eye on internal services while delivering cloud-based alerting. It aims to tackle the complexities of modern infrastructure monitoring.
 
-![SCR-20250404-rbfp.png](https://i.postimg.cc/C1D8t2x0/SCR-20250404-rbfp.png)
+<TwoColumnImageLayout
+  leftTopImage={{ src: "https://i.postimg.cc/T3K9SdkY/image.png", alt: "Service radar demo" }}
+  leftBottomImage={{ src: "https://i.postimg.cc/tJRJcgNr/image.png", alt: "Pollers" }}
+  rightTopImage={{ src: "https://i.postimg.cc/Qd7805r8/image.png", alt: "Onboarding step" }}
+  carouselImages={[
+    { src: "https://i.postimg.cc/2jJNM6GV/image.png", alt: "Service dashboard" },
+    { src: "https://i.postimg.cc/9MhrGbRH/image.png", alt: "Pollers" }
+  ]}
+/>
+
 
 Intrigued by the project's ambition, I explored the documentation and experimented with the current iteration. While functionally promising, my initial analysis suggested opportunities to enhance the user experience – particularly around the clarity of information presented and the ease with which new users could understand their system's status at a glance.
 
