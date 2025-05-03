@@ -11,7 +11,9 @@ module.exports = {
         },
         extend: {
             textColor: {
-                main: 'rgb(var(--color-text-main) / <alpha-value>)'
+                main: 'rgb(var(--color-text-main) / <alpha-value>)',
+                link: 'rgb(var(--color-link) / <alpha-value>)',
+                'link-hover': 'rgb(var(--color-link-hover) / <alpha-value>)'
             },
             backgroundColor: {
                 main: 'rgb(var(--color-bg-main) / <alpha-value>)',
@@ -26,7 +28,7 @@ module.exports = {
                         '--tw-prose-body': theme('textColor.main / 100%'),
                         '--tw-prose-headings': theme('textColor.main / 100%'),
                         '--tw-prose-lead': theme('textColor.main / 100%'),
-                        '--tw-prose-links': theme('textColor.main / 100%'),
+                        '--tw-prose-links': 'rgb(var(--color-link) / 100%)', /* Using our link color variable */
                         '--tw-prose-bold': theme('textColor.main / 100%'),
                         '--tw-prose-counters': theme('textColor.main / 100%'),
                         '--tw-prose-bullets': theme('textColor.main / 100%'),
@@ -39,7 +41,12 @@ module.exports = {
                         '--tw-prose-pre-bg': theme('colors.zinc.800'),
                         '--tw-prose-th-borders': theme('borderColor.main / 100%'),
                         '--tw-prose-td-borders': theme('borderColor.main / 100%'),
-                        maxWidth: 'none' // Remove max-width constraint
+                        maxWidth: 'none', // Remove max-width constraint
+                        a: {
+                            '&:hover': {
+                                color: 'rgb(var(--color-link-hover) / 100%)' /* Apply hover color */
+                            }
+                        }
                     }
                 },
                 DEFAULT: {
@@ -50,8 +57,10 @@ module.exports = {
                             textDecorationStyle: 'dashed',
                             textDecorationThickness: '1px',
                             textUnderlineOffset: '2px',
+                            color: 'rgb(var(--color-link) / 100%)', /* Using CSS variable for link color */
                             '&:hover': {
-                                textDecorationStyle: 'solid'
+                                textDecorationStyle: 'solid',
+                                color: 'rgb(var(--color-link-hover) / 100%)', /* Using CSS variable for hover color */
                             }
                         },
                         'h1,h2,h3,h4,h5,h6': {

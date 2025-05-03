@@ -13,12 +13,16 @@
         --color-bg-main: 242 241 236; /* #F2F1EC */
         --color-bg-muted: 234 233 225; /* #EAE9E1 */
         --color-border-main: 23 23 23; /* #171717 */
+        --color-link: 121 82 179; /* #7952b3 - purple */
+        --color-link-hover: 95 53 163; /* #5f35a3 - darker purple */
     }
     html.dark {
         --color-text-main: 242 241 236; /* #F2F1EC */
         --color-bg-main: 23 28 44; /* #171c2c */
         --color-bg-muted: 28 34 53; /* #1c2235 - slightly lighter than main for contrast */
         --color-border-main: 242 241 236; /* #F2F1EC */
+        --color-link: 161 122 219; /* #a17adb - lighter purple for dark mode */
+        --color-link-hover: 181 142 239; /* #b58eef - even lighter purple for hover in dark mode */
     }
 }
 
@@ -52,6 +56,16 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     filter: contrast(1.03) saturate(1.03);
+}
+
+/* Link styling for non-prose content */
+a:not(.prose a):not([class*="bg-"]):not([class*="btn"]) {
+    color: rgb(var(--color-link) / 100%);
+    transition: color 0.2s ease;
+}
+
+a:not(.prose a):not([class*="bg-"]):not([class*="btn"]):hover {
+    color: rgb(var(--color-link-hover) / 100%);
 }
 
 .prose img:hover {
