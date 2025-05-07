@@ -79,7 +79,7 @@ const siteConfig: SiteConfig = {
         }
     ],
     hero: {
-        title: 'Olá,Im a product designer based in Lisbon with an academic background in Communication Design. Previously Grafana, Jungle AI and Aptoide. Learn more about me or jump straight to the work.',
+        title: 'Im a product designer based in Lisbon with an academic background in Communication Design. Previously Grafana, Jungle AI and Aptoide. Learn more about me or jump straight to the work.',
         text: '',
         image: {
             src: '',
